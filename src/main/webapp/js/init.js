@@ -22,15 +22,41 @@ $(document).ready(function(){
   }));
 
   var geocoder = new nyc.Geoclient(GEOCLIENT_URL);
-
   var locationMgr = new nyc.LocationMgr({
     controls: new nyc.ol.control.ZoomSearch(map),
     locate: new nyc.ol.Locate(geocoder),
     locator: new nyc.ol.Locator({map: map})
   });
 
+  var typeFilter = new nyc.Check({
+    target: '#type',
+    title: 'Location type',
+    expanded: true,
+    choices: [{
+      name: 'permanent',
+      value: 'permanent',
+      label: '<img src="img/permanent.png" alt="ID NYC (permanent)">ID NYC (permanent)',
+      checked: true
+    }, {
+      name: 'temporary',
+      value: 'temporary',
+      label: '<img src="img/permanent.png" alt="ID NYC (permanent)">ID NYC (temporary)',
+      checked: true
+    }, {
+      name: 'cultural',
+      value: 'cultural',
+      label: '<img src="img/cultural.png" alt="Cultural Institution">Cultural Institution',
+      checked: true
+    }, {
+      name: 'financial',
+      value: 'financial',
+      label: '<img src="img/financial.png" alt="Financial Institution">Financial Institution',
+      checked: true
+    }]
+  });
+
   source.on(nyc.ol.source.Decorating.LoaderEventType.FEATURESLOADED , function(){
-    new nyc.App(map, source, locationMgr, new nyc.Directions('#dir-map', '#directions', GOOGLE_URL));
+    new nyc.App(map, source, locationMgr, typeFilter, new nyc.Directions('#dir-map', '#directions', GOOGLE_URL));
   });
 
   new nyc.Share('#map');

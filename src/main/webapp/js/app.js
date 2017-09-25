@@ -1,4 +1,4 @@
-nyc.App = function(map, source, locationMgr, directions){
+nyc.App = function(map, source, locationMgr, typeFilter, directions){
   this.map = map;
   this.view = map.getView();
   this.source = source;
@@ -11,6 +11,8 @@ nyc.App = function(map, source, locationMgr, directions){
   map.on('click', this.mapClick, this);
   locationMgr.on(nyc.Locate.EventType.GEOCODE, $.proxy(this.located, this));
 	locationMgr.on(nyc.Locate.EventType.GEOLOCATION, $.proxy(this.located, this));
+  typeFilter.on('change', this.filter, this);
+  this.typeFilter = typeFilter;
   nyc.app = this;
 };
 
@@ -20,6 +22,18 @@ nyc.App.prototype = {
   source: null,
   location: null,
   lastDir: null,
+  typeFilter: null,
+  filter: function(){
+		var me = this, values = [];
+    $.each(me.typeFilter.val(), function(){
+      values.push(this.value);
+    });
+		//provide time for checkbox display to update
+		setTimeout(function(){
+			me.source.filter([{property: 'type', values: values}]);
+			me.listLocations();
+		}, 100);
+	},
   origin: function(){
 		var location = this.location || {};
 		if (location.type == 'geolocation'){
@@ -30,7 +44,7 @@ nyc.App.prototype = {
 	},
   located: function(location){
     this.location = location;
-    this.listLocations(this.source.sort(location.coordinates));
+    this.listLocations();
   },
   zoomTo: function(coord){
     var me = this, feature = $(event.target).data('feature');
@@ -71,8 +85,8 @@ nyc.App.prototype = {
         coordinates: feature.getGeometry().getCoordinates()
       });
   },
-  listLocations: function(features){
-    var features = features || this.source.getFeatures();
+  listLocations: function(){
+    var features = this.source.sort(this.location);
     $('#location-list').empty();
     this.popup.hide();
 		this.pager.reset(features);
