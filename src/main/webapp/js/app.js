@@ -13,6 +13,7 @@ nyc.App = function(map, source, locationMgr, typeFilter, directions){
 	locationMgr.on(nyc.Locate.EventType.GEOLOCATION, $.proxy(this.located, this));
   typeFilter.on('change', this.filter, this);
   this.typeFilter = typeFilter;
+  $('#tabs a').click($.proxy(this.tabs, this));
   nyc.app = this;
 };
 
@@ -101,5 +102,25 @@ nyc.App.prototype = {
 			$('#location-list').append(div).trigger('create');
 		});
 		$('#btn-more')[$('div.inf-list').length == this.source.getFeatures().length ? 'fadeOut' : 'fadeIn']();
+	},
+  resize: function(){
+		if ($('#panel').width() != $(window).width() && $('#map-tab-btn').hasClass('ui-tabs-active')){
+			$('#location-tab-btn a').trigger('click');
+		}
+		if($(window).height() < $(window).width() && $('body').pagecontainer('getActivePage').attr('id') == 'dir-page'){
+			$('#dir-toggle a:last-of-type:not(.ui-btn-active)').trigger('click');
+		}
+	},
+  /**
+	 * @private
+	 * @method
+	 * @param {JQuery.Event} event
+	 */
+	tabs: function(event){
+		var target = $(event.currentTarget);
+		$('#panel').css(
+			'z-index',
+			target.attr('href') == '#map-tab' ? 999 : 1000
+		);
 	}
 };

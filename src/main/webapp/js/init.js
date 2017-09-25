@@ -59,7 +59,7 @@ $(document).ready(function(){
     }, {
       name: 'temporary',
       value: 'temporary',
-      label: '<img src="img/permanent.png" alt="ID NYC (permanent)">ID NYC (temporary)',
+      label: '<img src="img/temporary.png" alt="ID NYC (permanent)">ID NYC (temporary)',
       checked: true
     }, {
       name: 'cultural',
