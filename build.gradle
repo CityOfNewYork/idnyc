@@ -1,0 +1,86 @@
+import gov.nyc.doitt.nyc.gis.gradle.*
+
+plugins {
+    id 'base'
+    id 'org.hidetake.ssh' version '1.1.2'
+}
+
+ext{
+	appName = 'idnyc'
+	ver = 'v0.0.1-SNAPSHOT'
+
+  local_nyclib = 'https://maps.nyc.gov/nyc-lib/'
+	stg_nyclib = '../nyc-lib/'
+	prd_nyclib = '../nyc-lib/'
+
+	default_env = 'local'
+}
+
+task setEnv << {
+	if (!project.hasProperty('env')) project.ext.env = default_env
+ 	archive.archiveName = "${appName}-${ver}-${env}.zip"
+	archive.from {"build/${ver}"}
+}
+
+task copyFiles(dependsOn: clean) << {
+	def build = new File("build/${ver}")
+	build.mkdirs()
+	copy {
+		from 'src/main/webapp'
+		include '*.html'
+		include '*.json'
+		include 'img/**'
+		include 'manifest.webmanifest'
+		exclude 'img/Thumbs.db'
+		include 'css/**'
+		include 'js/**'
+		into "build/${ver}"
+	}
+}
+
+task replaceTokens(dependsOn: [setEnv, copyFiles]) << {
+	ant.taskdef(name: 'replace', classname: 'org.apache.tools.ant.taskdefs.Replace')
+	ant.replace(file: "build/${ver}/index.html", token: local_nyclib, value: project.ext["${env}_nyclib"])
+	if (project.hasProperty("idnyc.${env}.geoclient.url")){
+		ant.replace(file: "build/${ver}/js/init.js", token: project.ext['idnyc.git.geoclient.url'], value: project.ext["idnyc.${env}.geoclient.url"])
+	}
+  if (project.hasProperty("idnyc.${env}.google.url")){
+  ant.replace(file: "build/${ver}/js/init.js", token: project.ext['idnyc.git.google.url'], value: project.ext["idnyc.${env}.google.url"])
+	}
+  if (project.hasProperty('idnyc.analytics')){
+		ant.replace(file: "build/${ver}/index.html", token: '/* google analytics */', value: project.ext['idnyc.analytics'])
+	}
+}
+
+task archive(type: Zip, dependsOn: [replaceTokens]) {}
+
+remotes {
+	deployTarget {}
+}
+
+task deploy(dependsOn: [archive]) << {
+	def archiveDir = project.ext['archive.dir']
+	def deployDir = project.ext['idnyc.deploy.dir']
+
+	remotes.deployTarget.host = project.ext["${env}.host"]
+    remotes.deployTarget.user = project.ext["${env}.user"]
+    remotes.deployTarget.identity = file("${System.properties['user.home']}/.ssh/id_rsa")
+
+	println "deploying ${archive.archiveName} to ${remotes.deployTarget.host}:${deployDir}"
+
+	ssh.run {
+        session(remotes.deployTarget) {
+        	execute "mkdir -p ${archiveDir}"
+        	execute "mkdir -p ${deployDir}"
+            put "build/distributions/${archive.archiveName}", archiveDir
+            execute "cp -R ${deployDir} ${deployDir}.bak"
+            execute "rm -rf ${deployDir}"
+            execute "unzip ${archiveDir}/${archive.archiveName} -d ${deployDir}"
+            execute "rm -rf ${deployDir}.bak"
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion '2.9'
+}

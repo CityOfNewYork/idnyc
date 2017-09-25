@@ -1,0 +1,111 @@
+html, body, h1, #map {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+#map {
+  top: 45px;
+  right: 320px;
+}
+.ui-mobile-viewport h1 {
+    bottom: calc(100% - 45px);
+    background-color: rgba(19,74,118,1);
+    margin: 0;
+    padding: 6px 0 0 93px;
+    z-index: 1;
+    color: #fff;
+    font-size: 34px;
+}
+h1 img {
+    position: fixed;
+    top: 3px;
+    left: 3px;
+    height: 38px;
+    width: 80px;
+    margin: 0;
+    cursor: pointer;
+}
+#panel, #dir-panel {
+  position: fixed;
+  width: 320px;
+  top: 45px;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  padding: 0;
+  border-left: 1px solid rgba(51,136,204,.2);
+}
+#panel-content {
+  height: 100%;
+}
+#tabs {
+  padding: 0;
+  height: 100%;
+}
+#tabs .ui-navbar a, #tabs .ui-navbar a span {
+  height: 22px;
+  padding: 13px 0 9px;
+  text-shadow: none;
+  border: none;
+}
+#tabs .ui-navbar li {
+  width: 50%;
+}
+li#map-tab-btn {
+  display: none;
+}
+#tabs div.ui-tabs-panel {
+  height: calc(100% - 45px);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#location-list div.info {
+  padding: 10px 5px;
+}
+.name {
+  font-weight: bold;
+}
+.info .icon {
+  width: 21px;
+  height: 21px;
+  float: left;
+  margin: -3px 5px -10px 0;
+}
+.hours {
+  margin-top: 10px;
+  font-size: 14px !important;
+  font-weight: bold;
+}
+#location-list .info .ui-btn {
+  display: inline-block;
+  margin: 5px 5px 0;
+  width: 100px;
+}
+.popup .info .map.ui-btn {
+  display: none;
+}
+#location-list .info.even-row, #btn-more a {
+  background-color: rgba(51,136,204,.2);
+}
+#btn-more {
+  margin: 0 5px;
+}
+.ctl-btn.ui-btn, .ctl-btn.ui-btn:visited, .ui-page-theme-a .dir-mode-btn, .ui-page-theme-a .dir-mode-btn:visited, #back-to-map:after {
+  background-color: rgba(51,136,204,.5);
+}
+.ctl-btn.ui-btn:hover, .ui-page-theme-a .dir-mode-btn:hover, .ui-page-theme-a .dir-mode-btn.active-mode, #back-to-map:hover:after {
+  background-color: rgba(19,74,118,1);
+}
+#back-to-map {
+  padding-left: 28px;
+  top: 3px;
+  right: 3px;
+  margin: 0;
+  z-index: 2000;
+  color: rgba(19,74,118,1);
+}
+#back-to-map:after {
+  left: 3px;
+}
