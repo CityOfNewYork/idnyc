@@ -109,7 +109,9 @@ li#map-tab-btn {
 #back-to-map:after {
   left: 3px;
 }
-
+#filters {
+  padding: 0 5px;
+}
 #filters label img {
   width: 22px;
   height: 22px;
