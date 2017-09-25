@@ -2,8 +2,10 @@ nyc.feature = {
   html: function(){
     return $('<div class="info"></div>')
       .append(this.distanceHtml())
+      .append(this.iconHtml())
       .append(this.nameHtml())
       .append(this.addressHtml())
+      .append(this.hoursHtml())
       .append(this.mapHtml())
       .append(this.directionsHtml());
   },
