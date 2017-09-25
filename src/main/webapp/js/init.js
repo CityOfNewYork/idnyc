@@ -37,7 +37,7 @@ $(document).ready(function(){
 
   map.addLayer(new ol.layer.Vector({
     source: source,
-    style: nyc.style
+    style: nyc.idNycStyle
   }));
 
   var geocoder = new nyc.Geoclient(GEOCLIENT_URL);
