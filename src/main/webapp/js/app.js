@@ -47,7 +47,7 @@ nyc.App.prototype = {
     this.location = location;
     this.listLocations();
   },
-  zoomTo: function(coord){
+  zoomTo: function(event){
     var me = this, feature = $(event.target).data('feature');
     me.view.animate({
       zoom: 15,
