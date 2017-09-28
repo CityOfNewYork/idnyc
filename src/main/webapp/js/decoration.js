@@ -1,4 +1,4 @@
-nyc.feature = {
+var finderDecorations = {
   html: function(){
     return $('<div class="info"></div>')
       .append(this.distanceHtml())
@@ -35,14 +35,17 @@ nyc.feature = {
     return div.html(this.get('hours'));
   },
   mapHtml: function(){
-    var a = $('<a class="map" data-role="button" onclick="nyc.app.zoomTo(event);">Map</a>');
+    var a = $('<a class="map" data-role="button" onclick="nyc.finder.zoomTo(event);">Map</a>');
     return a.data('feature', this);
   },
   directionsHtml: function(){
-    var a = $('<a class="directions" data-role="button" onclick="nyc.app.directionsTo(event);">Directions</a>');
+    var a = $('<a class="directions" data-role="button" onclick="nyc.finder.directionsTo(event);">Directions</a>');
     return a.data('feature', this);
   },
-  address: function(){
+  getAddress: function(){
     return this.get('address1') + ', ' + this.get('city') + ' NY, ' + this.get('zip');
+  },
+  getName: function(){
+    return this.get('name');
   }
 };
