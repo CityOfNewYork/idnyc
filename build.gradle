@@ -32,7 +32,8 @@ task copyFiles(dependsOn: clean) << {
 		include 'img/**'
 		include 'manifest.webmanifest'
 		exclude 'img/Thumbs.db'
-		include 'css/**'
+    include 'data/**'
+    include 'css/**'
 		include 'js/**'
 		into "build/${ver}"
 	}
