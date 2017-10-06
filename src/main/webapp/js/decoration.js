@@ -21,11 +21,11 @@ var finderDecorations = {
     return img.attr('src', 'img/' + this.get('type').toLowerCase() + '.svg');
   },
   nameHtml: function(){
-    var div = $('<div class="name"></div>');
+    var div = $('<div class="name notranslate"></div>');
     return div.html(this.get('name'));
   },
   addressHtml: function(){
-    var div = $('<div class="address"></div>');
+    var div = $('<div class="address notranslate"></div>');
     return div.append('<div>' + this.get('address1') + '</div>')
       .append('<div>' + this.get('address2') + '</div>')
       .append('<div>' + this.get('city') + ', NY ' + this.get('zip') + '</div>');

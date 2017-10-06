@@ -66,3 +66,9 @@ div.express {
 div.express div {
 	transform: rotate(-45deg);
 }
+#lang-btn {
+  position: fixed;
+  left: 3px;
+  bottom: 80px;
+  z-index: 2;
+}
