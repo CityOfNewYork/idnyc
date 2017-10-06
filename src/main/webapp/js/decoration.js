@@ -18,7 +18,7 @@ var finderDecorations = {
   },
   iconHtml: function(){
     var img = $('<img class="icon">');
-    return img.attr('src', 'img/' + this.get('type') + '.png');
+    return img.attr('src', 'img/' + this.get('type').toLowerCase() + '.svg');
   },
   nameHtml: function(){
     var div = $('<div class="name"></div>');
@@ -31,8 +31,10 @@ var finderDecorations = {
       .append('<div>' + this.get('city') + ', NY ' + this.get('zip') + '</div>');
   },
   hoursHtml: function(){
-    var div = $('<div class="hours"></div>');
-    return div.html(this.get('hours'));
+    var hours = this.get('hours').trim();
+    if (hours){
+      return $('<div class="hours">' + hours + '</div>');
+    }
   },
   mapHtml: function(){
     var a = $('<a class="map" data-role="button" onclick="nyc.finder.zoomTo(event);">Map</a>');
