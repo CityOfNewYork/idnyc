@@ -1,0 +1,117 @@
+id,name,address1,address2,city,zip,hours,type
+0,Amalgamated Bank,94 East Burnside Avenue,,Bronx,10453,,financial
+1,Amalgamated Bank,2067 Bartow Avenue,,Bronx,10475,,financial
+2,Amalgamated Bank,3770 East Tremont Avenue,,Bronx,10465,,financial
+3,Amalgamated Bank,1212 Fulton Street,,Brooklyn,11216,,financial
+4,Amalgamated Bank,4502 5th Avenue,,Brooklyn,11220,,financial
+5,Amalgamated Bank,1745 Broadway,,New York,10019,,financial
+6,Amalgamated Bank,10 East 14th Street,,New York,10003,,financial
+7,Amalgamated Bank,564 West 125th Street,,New York,10027,,financial
+8,Amalgamated Bank,619 Main Street,,New York,10044,,financial
+9,Amalgamated Bank,275 7th Avenue,,New York,10001,,financial
+10,Amalgamated Bank,301 3rd Avenue,,New York,10010,,financial
+11,Amalgamated Bank,52 Broadway,,New York,10004,,financial
+12,Amalgamated Bank,158-11 Harry Van Arsdale Jr. Avenue,,Flushing,11365,,financial
+13,Amalgamated Bank,36-16 21st Street,,Long Island City ,11106,,financial
+14,"Bethex, A Division of USAlliance","20 East 179th Street, LL",,Bronx,10453,,financial
+15,Brooklyn Cooperative Federal Credit Union,1474 Myrtle Avenue,,Brooklyn ,11237,,financial
+16,Brooklyn Cooperative Federal Credit Union,834 Dekalb Avenue,,Brooklyn ,11221,,financial
+17,Carver Federal Savings Bank,4 Hanson Place,,Brooklyn ,11217,,financial
+18,Carver Federal Savings Bank,1392 Fulton Street,,Brooklyn ,11216,,financial
+19,Carver Federal Savings Bank,1009 Nostrand Avenue,,Brooklyn ,11225,,financial
+20,Carver Federal Savings Bank,833 Flatbush Avenue,,Brooklyn ,11226,,financial
+21,Carver Federal Savings Bank,300 West 145th Street,,New York,10039,,financial
+22,Carver Federal Savings Bank,142 Malcolm X Boulevard,,New York,10026,,financial
+23,Carver Federal Savings Bank,75 West 125th Street,,New York,10027,,financial
+24,Carver Federal Savings Bank,160 East 125th Street,,New York,10035,,financial
+25,Carver Federal Savings Bank,158-45 Archer Avenue,,Jamaica,11433,,financial
+26,Carver Federal Savings Bank,115-02 Merrick Boulevard,,Jamaica,11434,,financial
+27,East West Bank,77 Bowery,,New York,10002,,financial
+28,East West Bank,208 Canal Street,,New York,10013,,financial
+29,East West Bank,38-05 Union Street,,Flushing,11354,,financial
+30,East West Bank,41-80 Main Street,Suite 104,Flushing,11355,,financial
+31,East West Bank,1322-1328 Avenue U,,Brooklyn,11229,,financial
+32,East West Bank,5801 8th Avenue,,Brooklyn,11220,,financial
+33,First Republic Bank,320 Park Avenue,(at 51st Street),New York,10022,,financial
+34,First Republic Bank,575 Madison Avenue,(at 56th Street),New York,10022,,financial
+35,First Republic Bank,443 Park Avenue South,(at 30th Street),New York,10016,,financial
+36,First Republic Bank,148 East 79th Street,(at Lexington),New York,10075,,financial
+37,First Republic Bank,10 Columbus Circle,(at Time Warner Center),New York,10019,,financial
+38,First Republic Bank,2160 Broadway,(at 76th Street),New York,10024,,financial
+39,First Republic Bank,1230 Avenue of the Americas,(at 48th Street),New York,10020,,financial
+40,First Republic Bank,442 6th Avenue,(at 10th Street),New York,10011,,financial
+41,Lower East Side People's Federal Credit Union,37 Avenue B,,New York,10009,,financial
+42,Lower East Side People's Federal Credit Union,2052 Adam Clayton Powell Jr. Boulevard,,New York,10027,,financial
+43,Lower East Side People's Federal Credit Union,237 East 104th Street,,New York,10029,,financial
+44,Melrose Credit Union,139-30 Queens Boulevard,,Briarwood,11435,,financial
+45,Neighborhood Trust Federal Credit Union,1112 St. Nicholas Avenue,,New York,10032,,financial
+46,PNC Bank,"340 Madison Avenue, 1st Floor",,New York,10017,,financial
+47,PNC Bank,625 8th Avenue,,New York,10018,,financial
+48,PNC Bank,11 Penn Plaza,7th & West 31st Street,New York,10001,,financial
+49,PNC Bank,200 Broadway,Fulton Building,New York,10038,,financial
+50,Spring Bank,69 East 167th Street,,Bronx,10452,,financial
+51,Spring Bank,2049 8th Avenue,,New York,10026,,financial
+52,University Settlement Federal Credit Union,184 Eldridge Street,,New York,10002,,financial
+53,University Settlement Federal Credit Union,121 6th Avenue,,New York,10013,,financial
+54,Urban Upbound Federal Credit Union,13-03B 40th Avenue,,Long Island City ,11101,,financial
+55,USALLIANCE,350 W 31st Street,,New York,10001,,financial
+56,USALLIANCE,156 E. 117th Street,,New York,10035,,financial
+57,Bronx County Historical Society,3309 Bainbridge Ave,,Bronx,10467,,cultural
+58,Bronx Museum of the Arts,1040 Grand Concourse,,Bronx,10456,,cultural
+59,New York Botanical Garden,2900 Southern Blvd,,Bronx,10458,,cultural
+60,Pregones/Puerto Rican Traveling Theater,571 Walton Ave,,Bronx,10451,,cultural
+61,Wave Hill,W 249th St,,Bronx,10471,,cultural
+62,Wildlife Conservation Society / Bronx Zoo,2300 Southern Blvd,,Bronx,10460,,cultural
+63,BRIC,647 Fulton St.,,Brooklyn,11217,,cultural
+64,Brooklyn Academy of Music,30 Lafayette Ave,,Brooklyn,11217,,cultural
+65,Brooklyn Children's Museum,145 Brooklyn Ave,,Brooklyn,11213,,cultural
+66,Center for Performance Research,361 Manhattan Ave,,Brooklyn,11211,,cultural
+67,American Museum of Natural History,Central Park W & 79th St,,New York,10024,,cultural
+68,Carnegie Hall,57th Street and Seventh Avenue,,New York,10019,,cultural
+69,China Institute,100 Washington St,,New York,10006,,cultural
+70,The Drawing Center,35 Wooster St,,New York,10013,,cultural
+71,Film Forum,209 W Houston St,,New York,10014,,cultural
+72,"Lincoln Center for the Performing Arts, Inc.",10 Lincoln Center Plaza,,New York,10023,,cultural
+73,Metropolitan Museum of Art,1000 5th Ave,,New York,10028,,cultural
+74,Metropolitan Opera,30 Lincoln Center Plaza,,New York,10023,,cultural
+75,Museum at Eldridge Street,12 Eldridge St,,New York,10002,,cultural
+76,Museum of Arts and Design, 2 Columbus Circle,,New York,10019,,cultural
+77,Museum of Chinese in America,215 Centre St,,New York,10013,,cultural
+78,Museum of Jewish Heritage,36 Battery Pl,,New York,10280,,cultural
+79,Museum of Modern Art,11 W 53rd St,,New York,10019,,cultural
+80,Museum of the City of New York,1220 5th Ave,,New York,10029,,cultural
+81,New York City Ballet,20 Lincoln Center Plaza,,New York,10023,,cultural
+82,New York City Center,130 W 56th St,,New York,10019,,cultural
+83,Park Avenue Armory,643 Park Ave,,New York,10065,,cultural
+84,The Studio Museum in Harlem,144 W 125th St,,New York,10027,,cultural
+85,Sugar Hill Children's Museum of Art & Storytelling,898 St Nicholas Ave,,New York,10032,,cultural
+86,Symphony Space,2537 Broadway,,New York,10025,,cultural
+87,The Public Theater,425 Lafayette St,,New York,10003,,cultural
+88,Flushing Town Hall,137-35 Northern Blvd,,Flushing,11354,,cultural
+89,Jamaica Center for Arts & Learning,161-04 Jamaica Ave,,Jamaica,11432,,cultural
+90,MoMA PS1,22-25 Jackson Ave,,Long Island City,11101,,cultural
+91,Queens Museum,Flushing Meadows Corona Park,,Queens,11368,,cultural
+92,Queens Theatre in the Park,14 United Nations Ave S,,Queens,11368,,cultural
+93,St. George Theatre,35 Hyatt St,,Staten Island,10301,,cultural
+94,Jacques Marchais Center for Tibetan Art,338 Lighthouse Ave,,Staten Island,10306,,cultural
+95,Staten Island Museum,75 Stuyvesant Pl,,Staten Island,10301,,cultural
+96,Snug Harbor Cultural Center & Botanical Garden,1000 Richmond Terrace,,Staten Island,10301,,cultural
+97,Bronx - Bronx Library Center,310 East Kingsbridge Road,(at Kingsbridge and Briggs),Bronx,10458,Mon-Fri: 9:00am - 6:00pm<br>Sat: 10:00am - 2:00pm<b>Sun: 12:00pm - 6:00pm,permanent
+98,Bronx - Department of Finance,"3030 Third Avenue, 2nd Floor",(at E156th St and Third Ave),Bronx,10455,"Mon, Tue, Wed, Thu, Fri: 8:30am - 4:30pm",permanent
+99,Bronx - Lincoln Hospital,"234 East 149th Street, 1st Floor",(entrance on Morris Avenue),Bronx,10451,Mon-Fri: 8:00am - 4:00pm,permanent
+100,Brooklyn - Central Library at Grand Army Plaza,10 Grand Army Plaza,(at Eastern Parkway and Flatbush Ave),Brooklyn,11238,Mon - Fri: 9:00am - 6:00pm<br>Sat: 10am - 2:00pm<br>Sun: 1:00pm - 5:00pm,permanent
+101,Brooklyn - Coney Island IDNYC Center,"2865 West 8th Street, 1st Floor",,Brooklyn,11224,"Mon, Tue, Wed, Thu, Fri: 9:00am - 5:00pm",permanent
+102,Brooklyn - Department of Finance,"210 Joralemon Street, 1st Floor",(at Joralemon St and Court St),Brooklyn,11201,"Mon, Tue, Wed, Thu, Fri: 8:30am - 4:30pm",permanent
+103,Brooklyn - Asian Americans for Equality,"807 48th Street, 2nd Floor",,Brooklyn,11220,Tue-Sat: 9:00am - 5:00pm,permanent
+104,Manhattan - Department of Finance,66 John St 2nd Floor,(at John St and William St),New York,10038,"Mon, Tue, Wed, Thu, Fri: 8:30am - 4:30pm",permanent
+105,Manhattan - Grand Central Library,"135 E. 46th Street, 2nd Floor",,New York,10017,"Mon-Thu: 10:00am - 7:00pm<br>Fri: 10:00am - 6:00pm<br>Sat, Sun: 10:00am - 2:00pm",permanent
+106,Manhattan - Neighborhood Trust Federal Credit Union,1112 St. Nicholas Ave,(at W 166th St and St. Nicholas Ave),New York,10032,"Mon, Tue, Fri: 9:00am - 4:00pm<br>Wed: 9:00am - 1:00pm<br>Thu: 9:00am - 6:00pm<br>Sat: 10:00am - 2:00pm",permanent
+107,Manhattan - East Harlem Health Center,"158 East 115th Street, Room 220",,New York,10029,Mon - Fri: 9:00am - 5:00pm,permanent
+108,Manhattan - IDNYC Centre Street Office,"100 Centre Street, 14th Floor",,New York,10013,"Mon, Wed, Thu, Fri: 9:00am - 5:00pm<br>Tue: 10:00am - 6:00pm",permanent
+109,Manhattan - Metropolitan Hospital,1901 First Ave,,New York,10029,Mondays - Fridays: 9:00am - 5:00pm ,permanent
+110,Manhattan- CBIC,109 East 16th St. 1 FL,,New York,10003,Monday - Friday: 9:00am-5:00pm<br>,Permanent 
+111,Queens - Central Library in Jamaica,89-11 Merrick Blvd,(at 89th Ave and Merrick Blvd),Jamaica,11432,Mon-Fri: 9:00am - 6:00pm<br>Sat: 10:00am - 2:00pm<br>Sun: 12:00pm - 5:00pm,Permanent
+112,Queens - DOHMH Corona IDNYC Center,"34-33 Junction Blvd., Lower Level",(at 34th Road and Junction Blvd),Jackson Heights,11372,"Mon, Tue, Wed, Thu, Fri: 8:30am - 4:30pm",permanent
+113,Queens - Flushing Library,41-17 Main St,(at 41st Rd and Main St),Flushing,11355,Mon-Fri: 9:00am - 6:00pm<br>Sat: 10:00am - 2:00pm<br>Sun: 12:00pm - 5:00pm,permanent
+114,Queens -  Long Island City Community Library  ,"37-44 21st Street, 2nd Floor",,Long Island City,11101,"Mon: 9:00am - 8:00pm<br>Tues: 1:00pm - 6:00pm<br>Wed, Fri: 10:00am – 6:00pm<br>Thurs: 12:00pm - 8:00pm",permanent
+115,Staten Island - Department of Finance,"350 St. Marks Place, 1st Floor",(at St Marks Pl and Hyatt St),Staten Island,10301,"Mon, Tue, Wed, Thu, Fri: 8:30am - 4:30pm",permanent
