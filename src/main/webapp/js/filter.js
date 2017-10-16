@@ -10,8 +10,8 @@ var filterControls = [
       checked: true
     }, {
       name: 'type',
-      value: 'temporary',
-      label: '<img src="img/temporary.svg" alt="ID NYC (permanent)">ID NYC (temporary)',
+      value: 'popup',
+      label: '<img src="img/popup.svg" alt="ID NYC (permanent)">ID NYC (popup)',
       checked: true
     }, {
       name: 'type',
