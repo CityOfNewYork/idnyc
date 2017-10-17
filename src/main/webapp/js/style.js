@@ -11,7 +11,8 @@ var finderStyle = function(feature, resolution){
     finderStyle.cache[type][zoom] = new ol.style.Style({
       image: new ol.style.Icon({
         src: 'img/' + type + '.svg',
-        scale: size / 512
+        scale: size / 512,
+        imgSize: [512, 512]
       })
     });
   }
