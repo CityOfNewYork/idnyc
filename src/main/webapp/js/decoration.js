@@ -17,8 +17,7 @@ var finderDecorations = {
     }
   },
   iconHtml: function(){
-    var img = $('<img class="icon">');
-    return img.attr('src', 'img/' + this.get('type').toLowerCase() + '.svg');
+    return $('<div class="icon"></div>').addClass(this.get('type').toLowerCase());
   },
   nameHtml: function(){
     var div = $('<div class="name notranslate"></div>');

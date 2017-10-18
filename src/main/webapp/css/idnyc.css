@@ -72,3 +72,20 @@ div.express div {
   bottom: 80px;
   z-index: 2;
 }
+.icon.permanent, .icon.popup, .icon.financial, .icon.permanent.cultural {
+	background-repeat: no-repeat;
+	background-position: cetner;
+	background-size: 21px 21px;
+}
+.icon.permanent {
+	background-image: url(../img/permanent.svg);
+}
+.icon.popup {
+	background-image: url(../img/popup.svg);
+}
+.icon.financial {
+	background-image: url(../img/financial.svg);
+}
+.icon.cultural {
+	background-image: url(../img/cultural.svg);
+}
