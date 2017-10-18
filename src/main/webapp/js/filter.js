@@ -6,22 +6,22 @@ var filterControls = [
     choices: [{
       name: 'type',
       value: 'permanent',
-      label: '<img src="img/permanent.svg" alt="ID NYC (permanent)">ID NYC (permanent)',
+      label: '<div class="icon icon-permanent"></div>ID NYC (permanent)',
       checked: true
     }, {
       name: 'type',
       value: 'popup',
-      label: '<img src="img/popup.svg" alt="ID NYC (permanent)">ID NYC (popup)',
+      label: '<div class="icon icon-popup"></div>ID NYC (popup)',
       checked: true
     }, {
       name: 'type',
       value: 'cultural',
-      label: '<img src="img/cultural.svg" alt="Cultural Institution">Cultural Institution',
+      label: '<div class="icon icon-cultural"></div>Cultural Institution',
       checked: true
     }, {
       name: 'type',
       value: 'financial',
-      label: '<img src="img/financial.svg" alt="Financial Institution">Financial Institution',
+      label: '<div class="icon icon-financial"></div>Financial Institution',
       checked: true
     }]
   })

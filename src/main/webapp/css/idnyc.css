@@ -72,20 +72,23 @@ div.express div {
   bottom: 80px;
   z-index: 2;
 }
-.icon.permanent, .icon.popup, .icon.financial, .icon.permanent.cultural {
+.icon-permanent, .icon-popup, .icon-financial, .icon-cultural {
 	background-repeat: no-repeat;
-	background-position: cetner;
+	background-position: center;
 	background-size: 21px 21px;
+	width: 21px;
+	height: 21px;
+	float: left;
 }
-.icon.permanent {
+.icon-permanent {
 	background-image: url(../img/permanent.svg);
 }
-.icon.popup {
+.icon-popup {
 	background-image: url(../img/popup.svg);
 }
-.icon.financial {
+.icon-financial {
 	background-image: url(../img/financial.svg);
 }
-.icon.cultural {
+.icon-cultural {
 	background-image: url(../img/cultural.svg);
 }
