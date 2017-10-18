@@ -43,10 +43,10 @@ task replaceTokens(dependsOn: [setEnv, copyFiles]) << {
 	ant.taskdef(name: 'replace', classname: 'org.apache.tools.ant.taskdefs.Replace')
 	ant.replace(file: "build/${ver}/index.html", token: local_nyclib, value: project.ext["${env}_nyclib"])
 	if (project.hasProperty("idnyc.${env}.geoclient.url")){
-		ant.replace(file: "build/${ver}/index.html", token: project.ext['idnyc.git.geoclient.url'], value: project.ext["idnyc.${env}.geoclient.url"])
+		ant.replace(file: "build/${ver}/js/idnyc.js", token: project.ext['idnyc.git.geoclient.url'], value: project.ext["idnyc.${env}.geoclient.url"])
 	}
   if (project.hasProperty("idnyc.${env}.google.url")){
-    ant.replace(file: "build/${ver}/index.html", token: project.ext['idnyc.git.google.url'], value: project.ext["idnyc.${env}.google.url"])
+    ant.replace(file: "build/${ver}/js/idnyc.js", token: project.ext['idnyc.git.google.url'], value: project.ext["idnyc.${env}.google.url"])
 	}
   if (project.hasProperty('idnyc.analytics')){
 		ant.replace(file: "build/${ver}/index.html", token: '/* google analytics */', value: project.ext['idnyc.analytics'])
