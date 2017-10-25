@@ -95,6 +95,9 @@ div.express div {
 .icon-cultural {
 	background-image: url(../img/cultural.svg);
 }
+.inf-name {
+	font-weight: bold;
+}
 @media only screen and (max-height : 290px) {
 	#lang-btn {
 		left: 43px;
