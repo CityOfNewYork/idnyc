@@ -19,6 +19,7 @@ div.subway-icon {
 	text-align: center;
 	padding: 2px 0;
 	width: 22px;
+	height: 18px;
 	margin-right: 3px;
 	border: 1px solid rgba(0,0,0,0.1);
 	border-radius: 16px;
@@ -59,6 +60,8 @@ div.subway-N div, div.subway-Q div, div.subway-R div {
 div.express {
 	padding: 0;
 	width: 18px;
+	height: 18px;
+	text-align: center;
 	border-radius: 0;
 	transform: rotate(45deg);
 	margin: 4px;
