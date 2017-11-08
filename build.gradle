@@ -48,7 +48,7 @@ task replaceTokens(dependsOn: [setEnv, copyFiles]) << {
   if (project.hasProperty("idnyc.${env}.google.url")){
     ant.replace(file: "build/${ver}/js/idnyc.js", token: project.ext['idnyc.git.google.url'], value: project.ext["idnyc.${env}.google.url"])
 	}
-  if (project.hasProperty('idnyc.analytics')){
+  if (project.hasProperty("idnyc.${env}.analytics")){
 		ant.replace(file: "build/${ver}/index.html", token: '/* google analytics */', value: project.ext['idnyc.analytics'])
 	}
 }
