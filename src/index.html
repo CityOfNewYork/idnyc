@@ -35,7 +35,7 @@
   <script src="https://maps.nyc.gov/nyc-lib/v1.2.80/js/babel-polyfill.js"></script>
 	<script src="https://maps.nyc.gov/nyc-lib/v1.2.80/js/nyc-ol-lib.js"></script>
 
-	<link rel="stylesheet" href="https://maps.nyc.gov/nyc-lib/v1.2.80/css/nyc-ol-fullscreen-lib.css">
+	<link rel="stylesheet" type="text/css" href="https://maps.nyc.gov/nyc-lib/v1.2.80/css/nyc-ol-fullscreen-lib.css">
 	<style>
 		.facility .name:before, .chc-chc label:before {
 				content: ' ';
@@ -155,7 +155,7 @@
 					return $('<div>' + this.get('hours') + '</div>');
 				},
 			}],
-			directionsUrl: 'https://maps.googleapis.com/maps/api/js?client=gme-newyorkcitydepartment&channel=idnyc&sensor=false&libraries=visualization'
+			directionsUrl: 'https://maps.googleapis.com/maps/api/js?channel=idnyc&sensor=false&libraries=visualization'
 		});
 		
 		var subwayStyle = new ta.Style(ta.lookup);
