@@ -32,46 +32,105 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
   <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.4.0/papaparse.min.js"></script>
-  <script src="https://maps.nyc.gov/nyc-lib/v1.2.79/js/babel-polyfill.js?%ver%"></script>
-	<script src="https://maps.nyc.gov/nyc-lib/v1.2.79/js/nyc-ol-lib.js"></script>
+  <script src="https://maps.nyc.gov/nyc-lib/v1.2.80/js/babel-polyfill.js"></script>
+	<script src="https://maps.nyc.gov/nyc-lib/v1.2.80/js/nyc-ol-lib.js"></script>
+
+	<link rel="stylesheet" href="https://maps.nyc.gov/nyc-lib/v1.2.80/css/nyc-ol-fullscreen-lib.css">
+	<style>
+		.facility .name:before, .chc-chc label:before {
+				content: ' ';
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				margin: 0 5px -3px 0;
+				background-repeat: no-repeat;
+				background-size: 20px;
+		}
+		.facility.permanent .name:before, label[for="chc-chc-0"]:before {
+			background-image: url('img/permanent.svg');
+		}
+		.facility.cultural .name:before, label[for="chc-chc-1"]:before {
+			background-image: url('img/cultural.svg');
+		}
+		.facility.financial .name:before, label[for="chc-chc-2"]:before {
+			background-image: url('img/financial.svg');
+		}
+		#home {
+			visibility: hidden;
+		}
+		.fnd #banner {
+			background-image: url('img/idNycLogo.png');
+    background-size: 64px 30px;
+    background-position: 3px 0;
+		padding-left: 73px;
+		padding-top: 7px;
+    overflow: hidden;
+		}
+	</style>
 </head>
 <body class="loading" aria-hidden="true">
 	<div id="map"></div>
+	<script src="ta/lookup.js"></script>
+	<script src="ta/message.js"></script>
+	<script src="ta/style.js"></script>
+	<script src="ta/field-access.js"></script>
+	<script src="ta/html-renderer.js"></script>
 	<script>
-		
-		function Format(options) {
-			nyc.ol.format.CsvPoint.call(options);
-			this.wkt = new ol.format.WKT();
-		};
-		Format.prototype = nyc.ol.format.CsvPoint.prototype;
-		Format.prototype.readFeature = function(source) {
-			var feature = new ol.Feature(source);
-			var geom = this.wkt.readFeature('POINT' + source['Location 1']);
-			feature.setGeometry(geom.transform('EPSG:4326', 'EPSG:3857'));
+		function finderStyle(feature, resolution) {
+  		var type = feature.get('type').toLowerCase();
+  		var zoom = nyc.ol.TILE_GRID.getZForResolution(resolution);
+    	var size = 12;
+			if (zoom > 11) size = 16;
+			if (zoom > 13) size = 24;
+			if (zoom > 15) size = 32;
+			if (zoom > 17) size = 40;
+			return new ol.style.Style({
+				image: new ol.style.Icon({
+					src: 'img/' + type + '.svg',
+					scale: size / 512,
+					imgSize: [512, 512]
+				})
+			});
 		};
 
-		new nyc.ol.FinderApp({
-			title: 'ID NYC Locations Finder',
+		var format = new nyc.ol.format.CsvPoint({});
+		format.readFeature = function(source) {
+			var feature = new ol.Feature(source);
+			var coords = source['Location 1']
+			coords = coords.substr(1, coords.length - 2).split(',');
+			coords = [1 * coords[1], 1 * coords[0]];
+			var geom = new ol.geom.Point(proj4('EPSG:4326', 'EPSG:3857', coords));
+			feature.setGeometry(geom);
+			feature.detailButtonText = 'Hours';
+			return feature;
+		};
+
+		var app = new nyc.ol.FinderApp({
+			title: 'Locations Finder',
 			geoclientUrl: 'https://maps.nyc.gov/geoclient/v1/search.json?app_key=74DF5DB1D7320A9A2&app_id=nyc-lib-example',
 			facilityTabTitle: 'Locations',
 			facilityUrl: 'https://data.cityofnewyork.us/api/views/5pbr-mxtd/rows.csv?accessType=DOWNLOAD',
-			facilityFormat: new Format(),
-			facilityStyle: undefined,
+			facilityFormat: format,
+			facilityStyle: finderStyle,
 			filterChoiceOptions: [{
-				name: 'type',
-				values: ['permanent'],
-				label: '<div class="icon icon-permanent"></div>ID NYC (permanent)',
-				checked: true
-			}, {
-				name: 'type',
-				values: ['cultural'],
-				label: '<div class="icon icon-cultural"></div>Cultural Institution',
-				checked: true
-			}, {
-				name: 'type',
-				values: ['financial'],
-				label: '<div class="icon icon-financial"></div>Financial Institution',
-				checked: true
+					title: 'Location Type',
+					choices: [{
+					name: 'type',
+					values: ['permanent'],
+					label: 'ID NYC (permanent)',
+					checked: true
+				}, {
+					name: 'type',
+					values: ['cultural'],
+					label: 'Cultural Institution',
+					checked: true
+				}, {
+					name: 'type',
+					values: ['financial'],
+					label: 'Financial Institution',
+					checked: true
+				}]
 			}],
 			decorations: [{
 				getName: function() {
@@ -83,36 +142,66 @@
 				getAddress2: function() {
 					return this.get('address2');
 				},
-				getBorough: function() {
-					return {
-						M: 'Manhattan',
-						X: 'Bronx',
-						Q: 'Queens',
-						K: 'Brooklyn',
-						R: 'Staten Island'
-					}[this.get('BOROUGH')];
+				getCity: function() {
+					return this.get('city');
 				},
-				getCityStateZip: function() {
-					return this.getBorough() + ', NY ' + this.get('ZIP');
-				},
-				getPhone: function() {
-					return this.get('PHONE');
-				},
-				getEmail: function() {
-					return this.get('EMAIL');
-				},
-				getWebsite: function() {
-					return this.get('WEBSITE');
+				getCityStateZip : function() {
+					return this.getCity() + ', NY' + this.get('zip');
 				},
 				cssClass: function() {
-					return this.get('TYPE');
+					return this.get('type');
 				},
 				detailsHtml: function() {
-					return $('<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis, massa id consequat lacinia, massa enim semper nunc, sit amet dapibus ex mi posuere tellus. Aenean vulputate iaculis lorem elementum finibus. Fusce mauris libero, lacinia sed ultricies nec, imperdiet vel diam.</div>');
+					return $('<div>' + this.get('hours') + '</div>');
 				},
 			}],
-			directionsUrl: 'https://maps.googleapis.com/maps/api/js?client=gme-newyorkcitydepartment&channel=pka&sensor=false&libraries=visualization'
-		});		
+			directionsUrl: 'https://maps.googleapis.com/maps/api/js?client=gme-newyorkcitydepartment&channel=idnyc&sensor=false&libraries=visualization'
+		});
+		
+		var subwayStyle = new ta.Style(ta.lookup);
+		var subwayContent = new nyc.Content(ta.messages);
+
+		var subwayLineSrc = new ol.source.Vector({
+			url: 'data/subway-line.json', 
+			format: new nyc.ol.format.Decorate({
+				parentFormat: new ol.format.TopoJSON(),
+				decorations: [subwayContent, ta.lookup]
+			})
+		});var subwayLineLyr = new ol.layer.Vector({
+			source: subwayLineSrc,
+			style: $.proxy(subwayStyle.line, subwayStyle),
+			maxResolution: nyc.ol.TILE_GRID.getResolution(10),
+			opacity: 0.6
+		});
+
+		var subwayStationSrc = new ol.source.Vector({
+			url: 'data/subway-station.csv',
+			format: new nyc.ol.format.Decorate({
+				parentFormat: new nyc.ol.format.CsvPoint({
+					x: 'X',
+	        y: 'Y',
+  	      dataProjection: 'EPSG:2263'
+				}),
+				decorations: [subwayContent, ta.lookup, ta.fieldAccess, ta.htmlRenderer]
+			})
+		});
+		var subwayStationLyr = new ol.layer.Vector({
+			source: subwayStationSrc,
+			style: $.proxy(subwayStyle.station, subwayStyle),
+			maxResolution: nyc.ol.TILE_GRID.getResolution(10)
+		});
+		app.map.addLayer(subwayLineLyr);
+		app.map.addLayer(subwayStationLyr);
+
+		new nyc.ol.FeatureTip({
+      map: app.map,
+      tips: [{
+        layer: subwayStationLyr,
+        label: function(feature) {
+          return {html: feature.get('NAME')}
+        }
+      }]
+		});
 	</script>
 </body>
 </html>

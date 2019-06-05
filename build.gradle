@@ -7,7 +7,7 @@ plugins {
 
 ext{
 	appName = 'idnyc'
-	ver = 'v0.0.7-SNAPSHOT'
+	ver = 'v1.0.0'
 
   local_nyclib = 'https://maps.nyc.gov/nyc-lib/'
 	stg_nyclib = '../nyc-lib/'
@@ -26,15 +26,13 @@ task copyFiles(dependsOn: clean) << {
 	def build = new File("build/${ver}")
 	build.mkdirs()
 	copy {
-		from 'src/main/webapp'
+		from 'src'
 		include '*.html'
 		include '*.json'
 		include 'img/**'
 		include 'manifest.webmanifest'
 		exclude 'img/Thumbs.db'
     include 'data/**'
-    include 'css/**'
-		include 'js/**'
 		into "build/${ver}"
 	}
 }
@@ -43,10 +41,10 @@ task replaceTokens(dependsOn: [setEnv, copyFiles]) << {
 	ant.taskdef(name: 'replace', classname: 'org.apache.tools.ant.taskdefs.Replace')
 	ant.replace(file: "build/${ver}/index.html", token: local_nyclib, value: project.ext["${env}_nyclib"])
 	if (project.hasProperty("idnyc.${env}.geoclient.url")){
-		ant.replace(file: "build/${ver}/js/idnyc.js", token: project.ext['idnyc.git.geoclient.url'], value: project.ext["idnyc.${env}.geoclient.url"])
+		ant.replace(file: "build/${ver}/index.html", token: project.ext['idnyc.git.geoclient.url'], value: project.ext["idnyc.${env}.geoclient.url"])
 	}
   if (project.hasProperty("idnyc.${env}.google.url")){
-    ant.replace(file: "build/${ver}/js/idnyc.js", token: project.ext['idnyc.git.google.url'], value: project.ext["idnyc.${env}.google.url"])
+    ant.replace(file: "build/${ver}/index.html", token: project.ext['idnyc.git.google.url'], value: project.ext["idnyc.${env}.google.url"])
 	}
   if (project.hasProperty("idnyc.${env}.analytics")){
 		ant.replace(file: "build/${ver}/index.html", token: '<!-- google analytics -->', value: project.ext["idnyc.${env}.analytics"])
