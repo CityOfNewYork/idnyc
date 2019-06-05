@@ -70,7 +70,6 @@
 	</style>
 </head>
 <body class="loading" aria-hidden="true">
-	<div id="map"></div>
 	<script src="ta/lookup.js"></script>
 	<script src="ta/message.js"></script>
 	<script src="ta/style.js"></script>
@@ -97,12 +96,14 @@
 		var format = new nyc.ol.format.CsvPoint({});
 		format.readFeature = function(source) {
 			var feature = new ol.Feature(source);
-			var coords = source['Location 1']
-			coords = coords.substr(1, coords.length - 2).split(',');
-			coords = [1 * coords[1], 1 * coords[0]];
-			var geom = new ol.geom.Point(proj4('EPSG:4326', 'EPSG:3857', coords));
-			feature.setGeometry(geom);
 			feature.detailButtonText = 'Hours';
+			try {
+				var coords = source['Location 1']
+				coords = coords.substr(1, coords.length - 2).split(',');
+				coords = [1 * coords[1], 1 * coords[0]];
+				var geom = new ol.geom.Point(proj4('EPSG:4326', 'EPSG:3857', coords));
+				feature.setGeometry(geom);
+			} catch (badGeom) {}
 			return feature;
 		};
 
