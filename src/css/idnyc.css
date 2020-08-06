@@ -1,0 +1,31 @@
+.facility .name:before, .chc-chc label:before {
+    content: ' ';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 5px -3px 0;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+.facility.permanent .name:before, label[for="chc-chc-0"]:before {
+background-image: url('../img/permanent.svg');
+}
+.facility.cultural .name:before, label[for="chc-chc-1"]:before {
+background-image: url('../img/cultural.svg');
+}
+.facility.financial .name:before, label[for="chc-chc-2"]:before {
+background-image: url('../img/financial.svg');
+}
+#home {
+visibility: hidden;
+}
+
+.fnd #banner {
+    background-image: url('../img/idNycLogo.png');
+    background-size: 64px 30px;
+    background-position: 3px 0;
+	padding-left: 73px;
+	padding-top: 7px;
+    overflow: hidden;
+}
