@@ -34,6 +34,7 @@ class App extends FinderApp {
             facilityStyle: style.featureStyle,
             facilityFormat: format,
             decorations: decorations,
+            splashOptions: App.getSplashOptions(),
             facilitySearch: { displayField: 'search_label', nameField: 'search_name' },
             directionsUrl: config.DIRECTIONS_URL,
             filterChoiceOptions: [
@@ -65,4 +66,10 @@ class App extends FinderApp {
     }    
 }
 
+App.getSplashOptions = () => {
+	return {
+		message: config.SPLASH_MESSAGE,
+		buttonText: ['Screen reader instructions', 'View map']
+	}
+}
 export default App
