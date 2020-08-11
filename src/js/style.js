@@ -1,12 +1,12 @@
-import nyc0l from 'nyc-lib/nyc/ol'
+import nycol from 'nyc-lib/nyc/ol'
 import Style from 'ol/style/Style'
 import Icon from 'ol/style/Icon'
 
 const facilityStyle = {
     featureStyle: (feature, resolution) => {
         var type = feature.get('type').toLowerCase();
-        var zoom = nyc0l.TILE_GRID.getZForResolution(resolution);
-        //var zoom = 15;
+        var zoom = nycol.TILE_GRID.getZForResolution(resolution);
+
         var size = 12;
             if (zoom > 11) size = 16;
             if (zoom > 13) size = 24;
