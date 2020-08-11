@@ -2,6 +2,14 @@ import $ from 'jquery'
 import nyc from 'nyc-lib/nyc'
 
 const decorations = {
+    extendFeature() {
+        this.set(
+            'search_label',
+            `<b><span class="srch-lbl-lg">${this.getName()}</span></b><br>` +
+            `<span class="srch-lbl-sm">${this.getAddress1()}</span>`
+          )
+        this.set('search_name', `${this.getName()}, ${this.getAddress1()}, ${this.getCityStateZip()}`)
+    },
     getName: function() {
         return this.get('name');
     },

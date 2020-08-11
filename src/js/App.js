@@ -34,6 +34,7 @@ class App extends FinderApp {
             facilityStyle: style.featureStyle,
             facilityFormat: format,
             decorations: decorations,
+            facilitySearch: { displayField: 'search_label', nameField: 'search_name' },
             directionsUrl: config.DIRECTIONS_URL,
             filterChoiceOptions: [
                 {
