@@ -2,6 +2,7 @@ import FinderApp from 'nyc-lib/nyc/ol/FinderApp'
 import CsvPoint from 'nyc-lib/nyc/ol/format/CsvPoint'
 import config from './config'
 import decorations from './decorations'
+import oodFeatures from './oodFeatures'
 import Feature from 'ol/Feature'
 import Point from 'ol/geom/Point'
 import style from './style'
@@ -63,8 +64,15 @@ class App extends FinderApp {
                 }
             ]
         })
-    }    
-}
+    } 
+    ready(features) {
+        const oodList = oodFeatures.getOodList()
+        oodList.forEach(feature => {
+          this.source.removeFeature(feature)
+        })
+        super.ready(this.source.getFeatures())
+    }
+}  
 
 App.getSplashOptions = () => {
 	return {

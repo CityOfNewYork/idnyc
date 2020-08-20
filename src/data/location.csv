@@ -1,6 +1,6 @@
 ﻿ID,name,address1,address2,city,zip,hours,type,start_date,end_date,url,status_message,Location 1
 1000,Pop-Up Center NYC,2 Metrotech,(at Metrotech Plaza),Brooklyn,11201,Mon-Fri: 9:00am - 5:00pm,temporary,2020-08-01,2020-09-09,https://a069-idnyconlineportal.nyc.gov/IOPWeb/#/EN/Dashboard,Temporarily closed,
-76,"Lincoln Center for the Performing Arts, Inc.",10 Lincoln Center Plaza,,New York,10023,,cultural,,,http://www.aboutlincolncenter.org/support/idnyc-membership,,"(40.77247292645757, -73.98242107529359)"
+76,"Lincoln Center for the Performing Arts, Inc.",10 Lincoln Center Plaza,,New York,10023,,cultural,2020-08-01,2020-08-09,http://www.aboutlincolncenter.org/support/idnyc-membership,,"(40.77247292645757, -73.98242107529359)"
 111,Manhattan - Neighborhood Trust Federal Credit Union,1112 St. Nicholas Ave,(at W 166th St and St. Nicholas Ave),New York,10032,"Mon, Tue, Fri: 9:00am - 4:00pm<br>Wed: 9:00am - 1:00pm<br>Thu: 9:00am - 6:00pm<br>Sat: 10:00am - 2:00pm",permanent,,,https://a069-idnyconlineportal.nyc.gov/IOPWeb/#/EN/Dashboard,Temporarily closed,"(40.839281640096964, -73.939852152795)"
 0,Amalgamated Bank,94 East Burnside Avenue,,Bronx,10453,,financial,,,https://www.amalgamatedbank.com,,"(40.85321019180893, -73.90578489691431)"
 97,Queens Zoo,53-51 111th st,,Corona,11368,,cultural,,,https://queenszoo.com,,"(40.74378743463885, -73.84798550199181)"

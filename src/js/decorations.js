@@ -1,8 +1,11 @@
 import $ from 'jquery'
 import nyc from 'nyc-lib/nyc'
+import oodFeatures from './oodFeatures'
 
 const decorations = {
     extendFeature() {
+        oodFeatures.checkStatus(this);
+       
         this.set(
             'search_label',
             `<b><span class="srch-lbl-lg">${this.getName()}</span></b><br>` +
@@ -30,6 +33,12 @@ const decorations = {
     },
     detailsHtml: function() {
         return $('<div>' + this.get('hours') + '</div>');
+    },
+    getStartDate: function() {
+        return this.get('start_date')
+    },
+    getEndDate: function() {
+        return this.get('end_date')
     }
 }
 
