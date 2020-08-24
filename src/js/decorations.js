@@ -32,7 +32,13 @@ const decorations = {
         return this.get('type');
     },
     detailsHtml: function() {
-        return $('<div>' + this.get('hours') + '</div>');
+        const html = $('<div>' + this.get('hours') + '</div>')
+
+        const lnk = this.get('url')
+        if (lnk) {
+            html.append(`<a class="btn rad-all prep" href="${lnk}" target="_blank">Prepare for your visit</a>`)
+        }
+        return html
     },
     getStartDate: function() {
         return this.get('start_date')
