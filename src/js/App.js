@@ -5,73 +5,114 @@ import decorations from './decorations'
 import oodFeatures from './oodFeatures'
 import Feature from 'ol/Feature'
 import Point from 'ol/geom/Point'
-import style from './style'
+import styles from './style'
+import TopoJSON from 'ol/format/TopoJSON'
+import VectorLayer from 'ol/layer/Vector'
+import VectorSource from 'ol/source/Vector'
+import FeatureTip from 'nyc-lib/nyc/ol/FeatureTip'
+import Popup from 'nyc-lib/nyc/ol/MultiFeaturePopup'
+import MapMgr from 'nyc-lib/nyc/ol/MapMgr'
+import Decorate from 'nyc-lib/nyc/ol/format/Decorate'
 
 const format = new CsvPoint({});
 format.readFeature = source => {
-    const feature = new Feature(source)
-    try {
-        let coords = source['Location 1']
+  const feature = new Feature(source)
+  try {
+    let coords = source['Location 1']
 
-        if (!coords)
-            console.info("coords not defined")
-        coords = coords.substr(1, coords.length - 2).split(',')
-        coords = [1 * coords[1], 1 * coords[0]]
-        var geom = new Point(proj4('EPSG:4326', 'EPSG:3857', coords))
-        feature.setGeometry(geom)
-    } catch (badGeom) {
+    if (!coords)
+      console.info("coords not defined")
+      coords = coords.substr(1, coords.length - 2).split(',')
+      coords = [1 * coords[1], 1 * coords[0]]
+      var geom = new Point(proj4('EPSG:4326', 'EPSG:3857', coords))
+      feature.setGeometry(geom)
+  } catch (badGeom) {
         //console.error(badGeom, source)
-    }
-    return feature
+  }
+  return feature
 };
 
 class App extends FinderApp {
-    constructor() {   
-        super({
-            title: 'Locations Finder',
-            facilityTabTitle: 'Locations',
-            geoclientUrl: config.GEOCLIENT_URL,
-            facilityUrl: config.FACILITY_CSV_URL,
-            facilityStyle: style.featureStyle,
-            facilityFormat: format,
-            decorations: decorations,
-            splashOptions: App.getSplashOptions(),
-            facilitySearch: { displayField: 'search_label', nameField: 'search_name' },
-            directionsUrl: config.DIRECTIONS_URL,
-            filterChoiceOptions: [
-                {
-                    title: 'Location Type',
-                    choices: [
-                        {
-                            name: 'type',
-                            values: ['permanent'],
-                            label: 'ID NYC (permanent)',
-                            checked: true
-                        }, 
-                        {
-                            name: 'type',
-                            values: ['cultural'],
-                            label: 'Cultural Institution',
-                            checked: true
-                        },
-                        {
-                            name: 'type',
-                            values: ['financial'],
-                            label: 'Financial Institution',
-                            checked: true
-                        }
-                    ]
-                }
-            ]
-        })
-    } 
-    ready(features) {
-        const oodList = oodFeatures.getOodList()
-        oodList.forEach(feature => {
-          this.source.removeFeature(feature)
-        })
-        super.ready(this.source.getFeatures())
-    }
+  constructor() {   
+    super({
+      title: 'Locations Finder',
+      facilityTabTitle: 'Locations',
+      geoclientUrl: config.GEOCLIENT_URL,
+      facilityUrl: config.FACILITY_CSV_URL,
+      facilityStyle: styles.featureStyle,
+      facilityFormat: format,
+      decorations: decorations.facility,
+      splashOptions: App.getSplashOptions(),
+      facilitySearch: { displayField: 'search_label', nameField: 'search_name' },
+      directionsUrl: config.DIRECTIONS_URL,
+      filterChoiceOptions: [
+        {
+          title: 'Location Type',
+          choices: [
+            {
+              name: 'type',
+              values: ['permanent'],
+              label: 'ID NYC (permanent)',
+              checked: true
+            }, 
+            {
+              name: 'type',
+              values: ['cultural'],
+              label: 'Cultural Institution',
+              checked: true
+            },
+            {
+              name: 'type',
+              values: ['financial'],
+              label: 'Financial Institution',
+              checked: true
+            }
+          ]
+        }
+      ]
+    })
+    this.addSubwayLayers()
+  } 
+  ready(features) {
+    const oodList = oodFeatures.getOodList()
+    oodList.forEach(feature => {
+      this.source.removeFeature(feature)
+    })
+    super.ready(this.source.getFeatures())
+  }
+  makeLayer(decoration, url, zIndex, style) {
+    let source = new VectorSource({
+      url: url,
+      format: new Decorate({
+        parentFormat: new TopoJSON(),
+        decorations: decoration
+      })
+    })
+    let layer = new VectorLayer({
+      source: source,
+      style: style,
+      zIndex: zIndex
+    })
+    this.createTip(layer)
+    return layer
+  }
+  addSubwayLayers() {
+    let lineLayer = this.makeLayer([decorations.line],'../src/data/subway-line.topojson', 1, styles.lineStyle)
+    let stationLayer = this.makeLayer([decorations.station],'../src/data/subway-station.topojson', 2, styles.stationStyle)
+
+    this.map.addLayer(lineLayer)
+    this.map.addLayer(stationLayer)
+    this.popup.addLayer(stationLayer)
+  }
+  createTip(layer) {
+    let tip = new FeatureTip({
+      map: this.map,
+      tips: [{
+        layer: layer,
+        label: MapMgr.tipFunction
+      }]
+    })
+  }
 }  
 
 App.getSplashOptions = () => {

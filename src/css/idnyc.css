@@ -1,37 +1,95 @@
 .facility .name:before, .chc-chc label:before {
-    content: ' ';
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    margin: 0 5px -3px 0;
-    background-repeat: no-repeat;
-    background-size: 20px;
+  content: ' ';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 0 5px -3px 0;
+  background-repeat: no-repeat;
+  background-size: 20px;
 }
 .facility.permanent .name:before, label[for="chc-chc-0"]:before {
-background-image: url('../img/permanent.svg');
+  background-image: url('../img/permanent.svg');
 }
 .facility.cultural .name:before, label[for="chc-chc-1"]:before {
-background-image: url('../img/cultural.svg');
+  background-image: url('../img/cultural.svg');
 }
 .facility.financial .name:before, label[for="chc-chc-2"]:before {
-background-image: url('../img/financial.svg');
+  background-image: url('../img/financial.svg');
 }
 .fnd .facility .btn.prep {
-    display: block;
-    width: auto;
-    margin-top: 3px;
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22297%22%20height%3D%22297%22%3E%3Cg%20style%3D%22fill%3A%2300277A%22%3E%3Cpath%20d%3D%22M237.333%2C33h-50.14c-2.558-18.613-18.556-33-37.86-33s-35.303%2C14.387-37.86%2C33h-51.14C50.408%2C33%2C42%2C41.075%2C42%2C51v228%20c0%2C9.925%2C8.408%2C18%2C18.333%2C18h177c9.925%2C0%2C17.667-8.075%2C17.667-18V51C255%2C41.075%2C247.258%2C33%2C237.333%2C33z%20M93.052%2C48%20c3.432%2C18.033%2C19.084%2C31%2C38.092%2C31h36.379c19.008%2C0%2C34.66-12.967%2C38.092-31H223v216H75V48H93.052z%20M149.333%2C16%20c10.456%2C0%2C19.242%2C7.259%2C21.601%2C17h-43.201C130.091%2C23.259%2C138.877%2C16%2C149.333%2C16z%22%2F%3E%3Crect%20x%3D%2299%22%20y%3D%22109%22%20width%3D%2250%22%20height%3D%2215%22%2F%3E%3Cpolygon%20points%3D%22200.689%2C105.076%20189.645%2C94.924%20175.427%2C110.39%20169.237%2C105.347%20159.763%2C116.976%20176.907%2C130.944%22%2F%3E%3Crect%20x%3D%2299%22%20y%3D%22157%22%20width%3D%2250%22%20height%3D%2215%22%2F%3E%3Cpolygon%20points%3D%22200.689%2C153.076%20189.645%2C142.924%20175.427%2C158.39%20169.237%2C153.347%20159.763%2C164.976%20176.907%2C178.944%22%2F%3E%3Crect%20x%3D%2299%22%20y%3D%22205%22%20width%3D%2250%22%20height%3D%2215%22%2F%3E%3Cpolygon%20points%3D%22200.689%2C201.076%20189.645%2C190.924%20175.427%2C206.39%20169.237%2C201.347%20159.763%2C212.976%20176.907%2C226.944%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  display: block;
+  width: auto;
+  margin-top: 3px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22297%22%20height%3D%22297%22%3E%3Cg%20style%3D%22fill%3A%2300277A%22%3E%3Cpath%20d%3D%22M237.333%2C33h-50.14c-2.558-18.613-18.556-33-37.86-33s-35.303%2C14.387-37.86%2C33h-51.14C50.408%2C33%2C42%2C41.075%2C42%2C51v228%20c0%2C9.925%2C8.408%2C18%2C18.333%2C18h177c9.925%2C0%2C17.667-8.075%2C17.667-18V51C255%2C41.075%2C247.258%2C33%2C237.333%2C33z%20M93.052%2C48%20c3.432%2C18.033%2C19.084%2C31%2C38.092%2C31h36.379c19.008%2C0%2C34.66-12.967%2C38.092-31H223v216H75V48H93.052z%20M149.333%2C16%20c10.456%2C0%2C19.242%2C7.259%2C21.601%2C17h-43.201C130.091%2C23.259%2C138.877%2C16%2C149.333%2C16z%22%2F%3E%3Crect%20x%3D%2299%22%20y%3D%22109%22%20width%3D%2250%22%20height%3D%2215%22%2F%3E%3Cpolygon%20points%3D%22200.689%2C105.076%20189.645%2C94.924%20175.427%2C110.39%20169.237%2C105.347%20159.763%2C116.976%20176.907%2C130.944%22%2F%3E%3Crect%20x%3D%2299%22%20y%3D%22157%22%20width%3D%2250%22%20height%3D%2215%22%2F%3E%3Cpolygon%20points%3D%22200.689%2C153.076%20189.645%2C142.924%20175.427%2C158.39%20169.237%2C153.347%20159.763%2C164.976%20176.907%2C178.944%22%2F%3E%3Crect%20x%3D%2299%22%20y%3D%22205%22%20width%3D%2250%22%20height%3D%2215%22%2F%3E%3Cpolygon%20points%3D%22200.689%2C201.076%20189.645%2C190.924%20175.427%2C206.39%20169.237%2C201.347%20159.763%2C212.976%20176.907%2C226.944%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
   }
 #home {
-visibility: hidden;
+  visibility: hidden;
 }
 
 .fnd #banner {
-    background-image: url('../img/idNycLogo.png');
-    background-size: 64px 30px;
-    background-position: 3px 0;
+  background-image: url('../img/idNycLogo.png');
+  background-size: 64px 30px;
+  background-position: 3px 0;
 	padding-left: 73px;
 	padding-top: 7px;
-    overflow: hidden;
+  overflow: hidden;
+}
+
+/* subway css */
+h1.station-name, h1.station-url, div.note {
+  margin: 3px 0px;
+}
+div.subway-icon {
+	display: inline-block;
+	font-weight: bold;
+	text-align: center;
+	padding: 2px 0;
+	width: 22px;
+	margin-right: 3px;
+	border: 1px solid rgba(0,0,0,0.1);
+	border-radius: 16px;
+}
+div.express {
+	padding: 0;
+	width: 18px;
+	border-radius: 0;
+	transform: rotate(45deg);
+	margin: 4px;
+}
+div.express div {
+	transform: rotate(-45deg);
+}
+.subway-1, .subway-2, .subway-3 {
+	background-color: #ff3433;
+}
+.subway-4, .subway-5, .subway-6 {
+	background-color: #009d33;
+}
+.subway-7 {
+	background-color: #c801cc;
+}
+.subway-A, .subway-C, .subway-E {
+	background-color: #0e689a;
+}
+.subway-B, .subway-D, .subway-F, .subway-M {
+	background-color: #fa9705;
+}
+.subway-G {
+	background-color: #98cd01;
+}
+.subway-J, .subway-Z {
+	background-color: #9d6400;
+}
+.subway-L, .subway-S {
+	background-color: #999999;
+}
+.subway-N, .subway-Q, .subway-R, .subway-W {
+  background-color: #ffff0c;
+}
+div.subway-icon.subway-N div, div.subway-icon.subway-Q div, div.subway-icon.subway-R div, div.subway-icon.subway-W div {
+  color: #000;
+}
+div.subway-icon div {
+	color: #fff;
 }
