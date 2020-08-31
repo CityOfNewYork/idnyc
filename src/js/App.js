@@ -71,8 +71,13 @@ class App extends FinderApp {
         }
       ]
     })
+    this.rearrangeLayers()
     this.addSubwayLayers()
   } 
+  rearrangeLayers() {
+    this.map.getBaseLayers().labels.base.setZIndex(4)
+    this.layer.setZIndex(3)
+  }
   ready(features) {
     const oodList = oodFeatures.getOodList()
     oodList.forEach(feature => {
