@@ -35,20 +35,27 @@
 	padding-top: 7px;
   overflow: hidden;
 }
-
+.f-tip {
+	min-width: unset;
+}
 /* subway css */
 h1.station-name, h1.station-url, div.note {
   margin: 3px 0px;
 }
-div.subway-icon {
+.f-tip div.subway-icon, div.subway-icon {
 	display: inline-block;
 	font-weight: bold;
 	text-align: center;
 	padding: 2px 0;
-	width: 22px;
-	margin-right: 3px;
+	margin: 1px;
 	border: 1px solid rgba(0,0,0,0.1);
 	border-radius: 16px;
+}
+div.subway-icon {
+	width: 22px;
+}
+.f-tip div.subway-icon {
+	width: 18px;
 }
 div.express {
 	padding: 0;

@@ -72,7 +72,6 @@ const decorations = {
         let lineTruncate = line.indexOf('Express') > -1 ? line.replace('Express', '').trim() : line
         lineHtml += `<div class="subway-icon subway-${line.replace('Express', 'express')}"><div>${lineTruncate}</div></div>` 
       })
-
       return lineHtml
     },
     html() {
@@ -85,7 +84,10 @@ const decorations = {
   },
   line: {
     getTip() {
-      return `${this.get('name')} Line`
+      return this.getLine()
+    },
+    getLine() {
+      return decorations.station.getSubwayIcon(this.get('name'))
     }
   }
 }
