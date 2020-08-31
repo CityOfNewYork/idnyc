@@ -27,7 +27,7 @@ const styles = {
   lineStyle: (feature, resolution) => {
     const zoom = nycol.TILE_GRID.getZForResolution(resolution)
     let geom = feature.getGeometry()
-    let line = feature.get('name')
+    let line = feature.get('name').split('-')[0]
     let width = [2, 2, 2, 3, 3, 5, 5, 8, 8, 12, 16, 18, 20, 22][zoom - 9] || 20
 
     const style = [new Style({
