@@ -56,8 +56,8 @@ const styles = {
           color: 'rgba(255,255,255,0.9)'
         })
       })
-    });
-    if(zoom > 11) return style
+    })
+    if(zoom > 12) return style
   }
 }
 
