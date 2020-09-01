@@ -1,9 +1,260 @@
 import App from '../src/js/App'
+import config from '../src/js/config'
+import decorations from '../src/js/decorations'
+import styles from '../src/js/style'
 import FinderApp from 'nyc-lib/nyc/ol/FinderApp'
+import CsvPoint from 'nyc-lib/nyc/ol/format/CsvPoint'
+import VectorSource from 'ol/source/Vector'
+import VectorLayer from 'ol/layer/Vector'
+import TopoJSON from 'ol/format/TopoJSON'
+import Decorate from 'nyc-lib/nyc/ol/format/Decorate'
+import FeatureTip from 'nyc-lib/nyc/ol/FeatureTip'
+import MapMgr from 'nyc-lib/nyc/ol/MapMgr'
+import oodFeatures from '../src/js/oodFeatures'
+import { Feature } from 'ol'
+
 
 jest.mock('nyc-lib/nyc/ol/FinderApp')
+jest.mock('nyc-lib/nyc/ol/format/CsvPoint')
+jest.mock('ol/source/Vector')
+jest.mock('ol/layer/Vector')
+jest.mock('nyc-lib/nyc/ol/FeatureTip')
 
-test ('consturctor', () => {
+
+const rearrangeLayers = App.prototype.rearrangeLayers
+const addSubwayLayers = App.prototype.addSubwayLayers
+const readFeature = CsvPoint.prototype.readFeature
+
+const setZ = jest.fn()
+const addLayer = jest.fn()
+
+const mockMap = {
+  getBaseLayers: jest.fn().mockImplementation(() => {
+    return {
+      labels: {
+        base: {
+          setZIndex: setZ
+        }
+      }
+    }
+  }),
+  addLayer: addLayer
+}
+
+const mockPopup = {
+  addLayer: addLayer
+}
+
+
+beforeEach(() => {
+  $.resetMocks()
+  FinderApp.mockClear()
+  CsvPoint.mockClear()
+  App.prototype.rearrangeLayers = jest.fn()
+  App.prototype.addSubwayLayers = jest.fn()
+  CsvPoint.prototype.readFeature = jest.fn()
+})
+afterEach(() => {
+  App.prototype.rearrangeLayers = rearrangeLayers
+  App.prototype.addSubwayLayers = addSubwayLayers
+  CsvPoint.prototype.readFeature = readFeature
+})
+
+test ('constructor', () => {
+  expect.assertions(13)
+  const app = new App()
+  let source = 'Location 1,\n(40.75386839943908, -73.97851342945145)'
+  let coords = "(40.75386839943908, -73.97851342945145)" 
+  let format = new CsvPoint({
+    dataProjection: 'EPSG:4326'
+  })
+  expect(FinderApp).toHaveBeenCalledTimes(1)
+  expect(FinderApp.mock.calls[0][0].title).toEqual('Locations Finder')
+  expect(FinderApp.mock.calls[0][0].facilityTabTitle).toEqual('Locations')
+  expect(FinderApp.mock.calls[0][0].geoclientUrl).toEqual(config.GEOCLIENT_URL)
+  expect(FinderApp.mock.calls[0][0].facilityUrl).toEqual(config.FACILITY_CSV_URL)
+  expect(FinderApp.mock.calls[0][0].facilityStyle).toEqual(styles.featureStyle)
+  expect(FinderApp.mock.calls[0][0].decorations).toEqual(decorations.facility)
+  expect(FinderApp.mock.calls[0][0].splashOptions).toEqual(App.getSplashOptions())
+  expect(FinderApp.mock.calls[0][0].facilitySearch).toEqual({ displayField: 'search_label', nameField: 'search_name' })
+  expect(FinderApp.mock.calls[0][0].directionsUrl).toEqual(config.DIRECTIONS_URL)
+  expect(FinderApp.mock.calls[0][0].filterChoiceOptions).toEqual(
+  [
+    {
+      title: 'Location Type',
+      choices: [
+        {
+          name: 'type',
+          values: ['permanent'],
+          label: 'ID NYC (permanent)',
+          checked: true
+        }, 
+        {
+          name: 'type',
+          values: ['cultural'],
+          label: 'Cultural Institution',
+          checked: true
+        },
+        {
+          name: 'type',
+          values: ['financial'],
+          label: 'Financial Institution',
+          checked: true
+        }
+      ]
+    }
+  ])
+  expect(App.prototype.rearrangeLayers).toHaveBeenCalledTimes(1)
+  expect(App.prototype.addSubwayLayers).toHaveBeenCalledTimes(1)
+})
+
+describe('rearrangeLayers', () => {
+  const mockLayer = {
+    setZIndex: setZ
+  }
+
+  test('rearrangeLayers', () => {
+    expect.assertions(3)
+
     const app = new App()
-    expect(FinderApp).toHaveBeenCalledTimes(1)
+    app.layer = mockLayer
+    app.map = mockMap
+
+    app.rearrangeLayers = rearrangeLayers
+    app.rearrangeLayers()
+
+    expect(setZ).toHaveBeenCalledTimes(2)
+    expect(setZ.mock.calls[0][0]).toBe(4)
+    expect(setZ.mock.calls[1][0]).toBe(3)
+  })
+})
+
+describe('ready', () => {
+  const getOodList = oodFeatures.getOodList
+  const feature1 = new Feature({})
+  const feature2 = new Feature({})
+  beforeEach(() => {
+    oodFeatures.getOodList = jest.fn().mockImplementation(() => {
+      return [feature1, feature2]
+    })
+  })
+  afterEach(() => {
+    oodFeatures.getOodList = getOodList
+  })
+  test('ready', () => {
+    expect.assertions(6)
+    
+    const app = new App()
+    app.source = {
+      removeFeature: jest.fn(),
+      getFeatures: jest.fn().mockImplementation(() => {
+        return 'mock-features'
+      })
+    }
+    app.ready()
+    expect(oodFeatures.getOodList).toHaveBeenCalledTimes(1)
+    expect(app.source.removeFeature).toHaveBeenCalledTimes(2)
+    expect(app.source.removeFeature.mock.calls[0][0]).toBe(feature1)
+    expect(app.source.removeFeature.mock.calls[1][0]).toBe(feature2)
+    expect(FinderApp.prototype.ready).toHaveBeenCalledTimes(1)
+    expect(FinderApp.prototype.ready.mock.calls[0][0]).toBe('mock-features')
+  })
+})
+
+describe('makeLayer', () => {
+  const createTip = App.prototype.createTip
+  beforeEach(() => {
+    App.prototype.createTip = jest.fn()
+  })
+  afterEach(() => {
+    App.prototype.createTip = createTip
+  })
+  test('makeLayer', () => {
+    expect.assertions(10)
+
+    let decoration = {}, url = '', zIndex = 0, style = {}
+    const app = new App()
+
+    app.makeLayer(decoration, url, zIndex, style)
+    expect(VectorSource).toHaveBeenCalledTimes(1)
+    expect(VectorSource.mock.calls[0][0].url).toBe(url)
+    expect(VectorSource.mock.calls[0][0].format instanceof Decorate).toBe(true)
+    expect(VectorSource.mock.calls[0][0].format.parentFormat instanceof TopoJSON).toBe(true)
+    expect(VectorSource.mock.calls[0][0].format.decorations).toBe(decoration)
+
+    expect(VectorLayer).toHaveBeenCalledTimes(1)
+    expect(VectorLayer.mock.calls[0][0].style).toBe(style)
+    expect(VectorLayer.mock.calls[0][0].zIndex).toBe(zIndex)
+
+    expect(app.createTip).toHaveBeenCalledTimes(1)
+    expect(app.createTip.mock.calls[0][0] instanceof VectorLayer).toBe(true)
+  })
+
+})
+
+describe('addSubwayLayers', () => {
+  const makeLayer = App.prototype.makeLayer
+  const mockSource = jest.fn() 
+  const mockStyle = jest.fn() 
+  
+  const mockLayer = {
+    source: mockSource,
+    style: mockStyle,
+    setZIndex: setZ
+  }
+  beforeEach(() => {
+    App.prototype.makeLayer = jest.fn()
+  })
+  afterEach(() => {
+    App.prototype.makeLayer = makeLayer
+  })
+  test('addSubwayLayers', () => {
+    expect.assertions(10)
+
+    const app = new App()
+
+    app.map = mockMap
+    app.layer = mockLayer
+    app.popup = mockPopup
+
+    app.addSubwayLayers.mockClear()
+    app.addSubwayLayers = addSubwayLayers
+
+    app.addSubwayLayers()
+    expect(app.makeLayer).toHaveBeenCalledTimes(2)
+    expect(app.makeLayer.mock.calls[0][0]).toEqual([decorations.line])
+    expect(app.makeLayer.mock.calls[0][1]).toBe('../src/data/subway-line.topojson')
+    expect(app.makeLayer.mock.calls[0][2]).toBe(1)
+    expect(app.makeLayer.mock.calls[0][3]).toBe(styles.lineStyle)
+
+    expect(app.makeLayer.mock.calls[1][0]).toEqual([decorations.station])
+    expect(app.makeLayer.mock.calls[1][1]).toBe('../src/data/subway-station.topojson')
+    expect(app.makeLayer.mock.calls[1][2]).toBe(2)
+    expect(app.makeLayer.mock.calls[1][3]).toBe(styles.stationStyle)
+
+    expect(addLayer).toHaveBeenCalledTimes(3)
+  })
+})
+
+test('createTip', () => {
+  expect.assertions(5)
+
+  const mockLayer = 'mockLayer'
+  const app = new App()
+  app.map = mockMap
+
+  app.createTip(mockLayer)
+
+  expect(FeatureTip).toHaveBeenCalledTimes(1)
+  expect(FeatureTip.mock.calls[0][0].map).toBe(mockMap)
+  expect(FeatureTip.mock.calls[0][0].tips.length).toBe(1)
+  expect(FeatureTip.mock.calls[0][0].tips[0].layer).toBe(mockLayer)
+  expect(FeatureTip.mock.calls[0][0].tips[0].label).toBe(MapMgr.tipFunction)
+
+})
+
+test('getSplashOptions', () => {
+  expect.assertions(1)
+
+  expect(App.getSplashOptions()).toEqual({message: config.SPLASH_MESSAGE, buttonText: ['Screen reader instructions', 'View map']})
 })
