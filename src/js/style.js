@@ -26,31 +26,30 @@ const styles = {
   },
   lineStyle: (feature, resolution) => {
     const zoom = nycol.TILE_GRID.getZForResolution(resolution)
-    let geom = feature.getGeometry()
     let line = feature.get('name').split('-')[0]
-    let width = [2, 2, 2, 3, 3, 5, 5, 8, 8, 12, 16, 18, 20, 22][zoom - 9] || 20
+    let width = [2, 3, 3, 5, 5, 8, 8, 12, 16, 18, 20, 22][zoom - 11] || 20
 
-    const style = [new Style({
+    const style = new Style({
       stroke: new Stroke({
-        color: lookup.color[line],
+        color: lookup.color[line] || '#000',
         width: width / 2
       }),
       fill: new Fill({
         color: 'rgba(0, 0, 0, 0)'
       })
-    })]
+    })
     if(zoom > 10) return style
   },
   stationStyle: (feature, resolution) => {
     const zoom = nycol.TILE_GRID.getZForResolution(resolution)
-    let radius = [2, 2, 4, 4, 4, 6, 8, 10, 12, 16, 24, 24][zoom - 4]
+    let radius = [10, 12, 16, 24, 24, 28, 28][zoom - 11] || 28
 
     const style = new Style({
       image: new Circle({
-        radius: (radius / 4) || 6,
+        radius: (radius / 4),
         stroke: new Stroke({
           color: '#000',
-          width: radius > 2 ? 2 : 1
+          width: 2
         }),
         fill: new Fill({
           color: 'rgba(255,255,255,0.9)'
