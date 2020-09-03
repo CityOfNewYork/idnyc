@@ -31,6 +31,7 @@ format.readFeature = source => {
   }
   return feature
 };
+const readFeature = format.readFeature
 
 class App extends FinderApp {
   constructor() {   
@@ -126,4 +127,4 @@ App.getSplashOptions = () => {
 		buttonText: ['Screen reader instructions', 'View map']
 	}
 }
-export default App
+export {App, readFeature}

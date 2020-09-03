@@ -1,4 +1,4 @@
-import App from '../src/js/App'
+import {App} from '../src/js/App'
 import config from '../src/js/config'
 import decorations from '../src/js/decorations'
 import styles from '../src/js/style'

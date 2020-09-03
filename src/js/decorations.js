@@ -5,7 +5,7 @@ import oodFeatures from './oodFeatures'
 const decorations = {
   facility: {
     extendFeature() {
-      oodFeatures.checkStatus(this);
+      oodFeatures.checkStatus(this)
       
       this.set(
         'search_label',
@@ -14,23 +14,23 @@ const decorations = {
       )
       this.set('search_name', `${this.getName()}, ${this.getAddress1()}, ${this.getCityStateZip()}`)
     },
-    getName: function() {
-      return this.get('name');
+    getName() {
+      return this.get('name')
     },
-    getAddress1: function() {
-      return this.get('address1');
+    getAddress1() {
+      return this.get('address1')
     },
-    getAddress2: function() {
-      return this.get('address2');
+    getAddress2() {
+      return this.get('address2')
     },
-    getCity: function() {
-      return this.get('city');
+    getCity() {
+      return this.get('city')
     },
-    getCityStateZip : function() {
-      return this.getCity() + ', NY' + this.get('zip');
+    getCityStateZip() {
+      return this.getCity() + ', NY ' + this.get('zip')
     },
-    cssClass: function() {
-      return this.get('type');
+    cssClass() {
+      return this.get('type')
     },
     detailsHtml: function() {
       const html = $('<div>' + this.get('hours') + '</div>')
@@ -41,10 +41,10 @@ const decorations = {
       }
       return html
     },
-    getStartDate: function() {
+    getStartDate() {
       return this.get('start_date')
     },
-    getEndDate: function() {
+    getEndDate() {
       return this.get('end_date')
     }
   },
