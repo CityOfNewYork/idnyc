@@ -38,6 +38,12 @@
 .f-tip {
 	min-width: unset;
 }
+.hours {
+	margin-left: 15px;
+}
+.translated-rtl .hours {
+	margin-right: 15px;
+}
 /* subway css */
 h1.station-name, h1.station-url, div.note {
   margin: 3px 0px;

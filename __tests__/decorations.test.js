@@ -40,11 +40,11 @@ describe('facility', () => {
   test('cssClass', () => {
     expect(facilityPermanent.cssClass()).toBe('permanent')
   })
-  test('detailsHtml', () => {
-    expect($(facilityPermanent.detailsHtml())).toEqual($('<div>10am - 5pm</div>'))
+  test('detailsHtml - no fields', () => {
+    expect(Object.assign(new Feature({}), decorations.facility).detailsHtml()).toBeUndefined()
   })
-  test('detailsHtml - w/ url', () => {
-    expect(Object.assign(new Feature({'url': 'url', 'hours': 'hours'}), decorations.facility).detailsHtml()).toEqual($('<div>hours<a class="btn rad-all prep" href="url" target="_blank">Prepare for your visit</a></div>'))
+  test('detailsHtml - w/ fields', () => {
+    expect(Object.assign(new Feature({'url': 'url', 'hours': 'hours', 'status_message': 'Closed' }), decorations.facility).detailsHtml()).toEqual($('<div><div><strong>Hours: </strong><div class="hours notranslate">hours</div></div><div><strong>Status: </strong>Closed</div><a class="btn rad-all prep" href="url" target="_blank">Prepare for your visit</a></div>'))
   })
   test('getStartDate', () => {
     expect(facilityPermanent.getStartDate()).toBe('2020-08-01')

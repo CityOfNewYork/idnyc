@@ -33,13 +33,23 @@ const decorations = {
       return this.get('type')
     },
     detailsHtml: function() {
-      const html = $('<div>' + this.get('hours') + '</div>')
+      const html = $('<div></div>')
 
       const lnk = this.get('url')
+      const status = this.get('status_message')
+      const hours = this.get('hours')
+
+      if (hours) {
+        html.append(`<div><strong>Hours: </strong><div class="hours notranslate">${hours}</div></div>`)
+      }
+      if (status) {
+        html.append(`<div><strong>Status: </strong>${status}</div>`)
+      }
       if (lnk) {
         html.append(`<a class="btn rad-all prep" href="${lnk}" target="_blank">Prepare for your visit</a>`)
       }
-      return html
+
+      if (html.children().length > 0) return html
     },
     getStartDate() {
       return this.get('start_date')
