@@ -12,7 +12,7 @@ import FeatureTip from 'nyc-lib/nyc/ol/FeatureTip'
 import MapMgr from 'nyc-lib/nyc/ol/MapMgr'
 import oodFeatures from '../src/js/oodFeatures'
 import { Feature } from 'ol'
-
+import Point from 'ol/geom/Point'
 
 jest.mock('nyc-lib/nyc/ol/FinderApp')
 jest.mock('nyc-lib/nyc/ol/format/CsvPoint')
@@ -257,4 +257,76 @@ test('getSplashOptions', () => {
   expect.assertions(1)
 
   expect(App.getSplashOptions()).toEqual({message: config.SPLASH_MESSAGE, buttonText: ['Screen reader instructions', 'View map']})
+})
+
+describe('located', () => {
+  const zoomToExtent = App.prototype.zoomToExtent
+
+beforeEach(() => {
+  App.prototype.zoomToExtent = jest.fn()
+})
+
+afterEach(() => {
+  App.prototype.zoomToExtent = zoomToExtent
+})
+
+  test('located', () => {
+    expect.assertions(6)
+
+
+    const app = new App()
+    const location = {
+      coordinate: 'mock-coordinate'
+    }
+
+    app.located(location)
+
+    expect(FinderApp).toHaveBeenCalledTimes(1)
+    expect(FinderApp.mock.instances[0].located).toHaveBeenCalledTimes(1)
+    expect(FinderApp.mock.instances[0].located.mock.calls[0][0]).toBe(location)
+
+    expect(App.prototype.zoomToExtent).toHaveBeenCalledTimes(1)
+    expect(App.prototype.zoomToExtent.mock.calls[0][0]).toBe(location.coordinate)
+    expect(App.prototype.zoomToExtent.mock.calls[0][1]).toBe(config.FACILITY_LIMIT)
+
+  })
+})
+
+describe('zoomToExtent', () => {
+  const mockSource = {
+    nearest: jest.fn().mockImplementation((coord, limit) => {
+      return [new Feature({geometry: new Point([100, 200])}), new Feature({geometry: new Point([100, 100])}), new Feature({geometry: new Point([200, 200])}), new Feature({geometry: new Point([300, 0])})]
+    })
+  }
+  const mockMap = {
+    getSize: jest.fn().mockImplementation(() => {
+      return 'mock-size'
+    })
+  }
+  const mockView = {
+    fit: jest.fn()
+  }
+
+  test('zoomToExtent', () => {
+    expect.assertions(8)
+
+    const app = new App()
+    app.source = mockSource
+    app.map = mockMap
+    app.view = mockView
+
+    app.zoomToExtent([100, 150], config.FACILITY_LIMIT)
+
+    expect(mockSource.nearest).toHaveBeenCalledTimes(1)
+    expect(mockSource.nearest.mock.calls[0][0]).toEqual([100, 150])
+    expect(mockSource.nearest.mock.calls[0][1]).toBe(config.FACILITY_LIMIT)
+
+    expect(mockMap.getSize).toHaveBeenCalledTimes(1)
+    expect(mockView.fit).toHaveBeenCalledTimes(1)
+
+    expect(mockView.fit.mock.calls[0][0]).toEqual([100, 0, 300, 200])
+    expect(mockView.fit.mock.calls[0][1].size).toBe('mock-size')
+    expect(mockView.fit.mock.calls[0][1].duration).toBe(500)
+
+  })
 })

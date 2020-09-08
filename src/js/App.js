@@ -13,6 +13,7 @@ import FeatureTip from 'nyc-lib/nyc/ol/FeatureTip'
 import Popup from 'nyc-lib/nyc/ol/MultiFeaturePopup'
 import MapMgr from 'nyc-lib/nyc/ol/MapMgr'
 import Decorate from 'nyc-lib/nyc/ol/format/Decorate'
+import {extend as extentExtend} from 'ol/extent'
 
 const format = new CsvPoint({});
 format.readFeature = source => {
@@ -118,6 +119,18 @@ class App extends FinderApp {
         label: MapMgr.tipFunction
       }]
     })
+  }
+  located(location) {
+    super.located(location)
+    this.zoomToExtent(location.coordinate, config.FACILITY_LIMIT)
+  }
+  zoomToExtent(coord, limit){
+    let extent = new Point(coord).getExtent()
+    const features = this.source.nearest(coord, limit)
+    features.forEach(f => {
+      extent = extentExtend(extent, f.getGeometry().getExtent())
+    })
+    this.view.fit(extent, {size: this.map.getSize(), duration: 500})
   }
 }  
 
