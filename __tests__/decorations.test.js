@@ -82,15 +82,15 @@ describe('station', () => {
   })
   test('getSubwayIcon', () => {
     let line = '7'
-    expect(stationFeature.getSubwayIcon(line)).toBe(`<div class="subway-icon subway-7"><div>7</div></div>`)
+    expect(stationFeature.getSubwayIcon(line)).toBe(`<div class="subway-icon subway-7 notranslate"><div>7</div></div>`)
   })
   test('getSubwayIcon - express', () => {
     let line = '7 Express'
-    expect(stationFeature.getSubwayIcon(line)).toBe(`<div class="subway-icon subway-7 express"><div>7</div></div>`)
+    expect(stationFeature.getSubwayIcon(line)).toBe(`<div class="subway-icon subway-7 express notranslate"><div>7</div></div>`)
   })
   test('getSubwayIcon - local/express', () => {
     let line = '7-7 Express'
-    expect(stationFeature.getSubwayIcon(line)).toBe(`<div class="subway-icon subway-7"><div>7</div></div><div class="subway-icon subway-7 express"><div>7</div></div>`)
+    expect(stationFeature.getSubwayIcon(line)).toBe(`<div class="subway-icon subway-7 notranslate"><div>7</div></div><div class="subway-icon subway-7 express notranslate"><div>7</div></div>`)
   })
   describe('html', () => {
     const getSubwayIcon = stationFeature.getSubwayIcon
@@ -124,7 +124,7 @@ describe('station', () => {
       stationFeature.getName = getName
     })
     test('html', () => {
-      expect(stationFeature.html()).toEqual($('<div class="station"><h1 class="station-name">mockName</h1>mockSubwayIcon<h1 class="station-url">mockUrl</h1>mockNote</div>'))
+      expect(stationFeature.html()).toEqual($('<div class="station"><h1 class="station-name">mockName</h1>mockSubwayIcon<h1 class="station-url notranslate">mockUrl</h1>mockNote</div>'))
       expect(stationFeature.getSubwayIcon).toHaveBeenCalledTimes(1)
       expect(stationFeature.getLine).toHaveBeenCalledTimes(1)
       expect(stationFeature.getNote).toHaveBeenCalledTimes(1)

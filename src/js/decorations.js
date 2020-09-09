@@ -80,7 +80,7 @@ const decorations = {
       
       lines.forEach(line => {
         let lineTruncate = line.indexOf('Express') > -1 ? line.replace('Express', '').trim() : line
-        lineHtml += `<div class="subway-icon subway-${line.replace('Express', 'express')}"><div>${lineTruncate}</div></div>` 
+        lineHtml += `<div class="subway-icon subway-${line.replace('Express', 'express')} notranslate"><div>${lineTruncate}</div></div>` 
       })
       return lineHtml
     },
@@ -88,7 +88,7 @@ const decorations = {
       return $('<div class="station"></div>')
         .append(`<h1 class="station-name">${this.getName()}</h1>`)
         .append(this.getSubwayIcon(this.getLine()))
-        .append(`<h1 class="station-url">${this.getUrl()}</h1>`)
+        .append(`<h1 class="station-url notranslate">${this.getUrl()}</h1>`)
         .append(this.getNote()) 
     }
   },

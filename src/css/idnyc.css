@@ -4,9 +4,20 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  margin: 0 5px -3px 0;
   background-repeat: no-repeat;
   background-size: 20px;
+}
+.facility .name:before {
+	margin: 0 3px -4px -3px;
+}
+.chc-chc label:before { 
+  margin: 0 5px -5px -5px;
+}
+.translated-rtl .chc-chc label:before {
+	margin: 0px -2px -4px 4px;
+}
+.translated-rtl .pop>.content .name {
+	padding-right: unset;
 }
 .facility.permanent .name:before, label[for="chc-chc-0"]:before {
   background-image: url('../img/permanent.svg');
@@ -44,6 +55,7 @@
 .translated-rtl .hours {
 	margin-right: 15px;
 }
+
 /* subway css */
 h1.station-name, h1.station-url, div.note {
   margin: 3px 0px;
@@ -105,4 +117,7 @@ div.subway-icon.subway-N div, div.subway-icon.subway-Q div, div.subway-icon.subw
 }
 div.subway-icon div {
 	color: #fff;
+}
+.translated-rtl div.subway-icon div {
+	text-align: center;
 }
