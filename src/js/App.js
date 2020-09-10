@@ -104,8 +104,8 @@ class App extends FinderApp {
     return layer
   }
   addSubwayLayers() {
-    let lineLayer = this.makeLayer([decorations.line],'../src/data/subway-line.topojson', 1, styles.lineStyle)
-    let stationLayer = this.makeLayer([decorations.station],'../src/data/subway-station.topojson', 2, styles.stationStyle)
+    let lineLayer = this.makeLayer([decorations.line],'data/subway-line.topojson', 1, styles.lineStyle)
+    let stationLayer = this.makeLayer([decorations.station],'data/subway-station.topojson', 2, styles.stationStyle)
 
     this.map.addLayer(lineLayer)
     this.map.addLayer(stationLayer)

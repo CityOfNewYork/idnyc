@@ -223,12 +223,12 @@ describe('addSubwayLayers', () => {
     app.addSubwayLayers()
     expect(app.makeLayer).toHaveBeenCalledTimes(2)
     expect(app.makeLayer.mock.calls[0][0]).toEqual([decorations.line])
-    expect(app.makeLayer.mock.calls[0][1]).toBe('../src/data/subway-line.topojson')
+    expect(app.makeLayer.mock.calls[0][1]).toBe('data/subway-line.topojson')
     expect(app.makeLayer.mock.calls[0][2]).toBe(1)
     expect(app.makeLayer.mock.calls[0][3]).toBe(styles.lineStyle)
 
     expect(app.makeLayer.mock.calls[1][0]).toEqual([decorations.station])
-    expect(app.makeLayer.mock.calls[1][1]).toBe('../src/data/subway-station.topojson')
+    expect(app.makeLayer.mock.calls[1][1]).toBe('data/subway-station.topojson')
     expect(app.makeLayer.mock.calls[1][2]).toBe(2)
     expect(app.makeLayer.mock.calls[1][3]).toBe(styles.stationStyle)
 
