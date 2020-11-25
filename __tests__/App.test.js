@@ -1,4 +1,4 @@
-import {App} from '../src/js/App'
+import App from '../src/js/App'
 import config from '../src/js/config'
 import decorations from '../src/js/decorations'
 import styles from '../src/js/style'
@@ -61,13 +61,9 @@ afterEach(() => {
 })
 
 test ('constructor', () => {
-  expect.assertions(13)
+  expect.assertions(17)
   const app = new App()
-  let source = 'Location 1,\n(40.75386839943908, -73.97851342945145)'
-  let coords = "(40.75386839943908, -73.97851342945145)" 
-  let format = new CsvPoint({
-    dataProjection: 'EPSG:4326'
-  })
+
   expect(FinderApp).toHaveBeenCalledTimes(1)
   expect(FinderApp.mock.calls[0][0].title).toEqual('Locations Finder')
   expect(FinderApp.mock.calls[0][0].facilityTabTitle).toEqual('Locations')
@@ -104,6 +100,12 @@ test ('constructor', () => {
       ]
     }
   ])
+  
+  expect(FinderApp.mock.calls[0][0].facilityFormat instanceof CsvPoint).toBe(true)
+  expect(CsvPoint.mock.calls[0][0].x).toEqual('x_coordinate')
+  expect(CsvPoint.mock.calls[0][0].y).toEqual('y_coordinate')
+  expect(CsvPoint.mock.calls[0][0].dataProjection).toEqual('EPSG:2263')
+
   expect(App.prototype.rearrangeLayers).toHaveBeenCalledTimes(1)
   expect(App.prototype.addSubwayLayers).toHaveBeenCalledTimes(1)
 })

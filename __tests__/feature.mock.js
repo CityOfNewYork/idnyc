@@ -1,11 +1,17 @@
 import style from '../src/js/style'
 import decorations from '../src/js/decorations'
 import nyc from 'nyc-lib/nyc'
-import {readFeature} from '../src/js/App'
+import CsvPoint from 'nyc-lib/nyc/ol/format/CsvPoint'
 import Feature from 'ol/Feature'
 
+const csvPoint = new CsvPoint({
+  x: 'x_coordinate',
+  y: 'y_coordinate',
+  defaultDataProjection: 'EPSG:2263'
+})
+
 const permanent = {
-  ID: 62,
+  id: 62,
   name: "King Manor",
   address1: "150-03 Jamaica Ave",
   address2: "",
@@ -13,15 +19,17 @@ const permanent = {
   zip: "11432",
   hours: "10am - 5pm",
   type: "permanent",
-  'Location 1': "(40.702446, -73.803428)",
+  location: "(40.702446, -73.803428)",
+  x_coordinate: 1038704,
+  y_coordinate: 195232,
   start_date: '2020-08-01',
   end_date: '2020-09-03',
   url: ''
 }
-const facilityPermanent = readFeature(permanent)
+const facilityPermanent = csvPoint.readFeature(permanent)
 
 const cultural = {
-  ID: 46,
+  id: 46,
   name: "PNC Bank",
   address1: "340 Madison Avenue",
   address2: "(1st floor)",
@@ -29,12 +37,14 @@ const cultural = {
   zip: "10017",
   hours: "Mon-Fri: 8:30am - 4:30pm",
   type: "cultural",
-  'Location 1': "(40.75386839943908, -73.97851342945145)" 
+  location: "(40.75386839943908, -73.97851342945145)",
+  x_coordinate: 990203,
+  y_coordinate: 213932,
 }
-const facilityCultural = readFeature(cultural)
+const facilityCultural = csvPoint.readFeature(cultural)
 
 const financial = {
-  ID: 28,
+  id: 28,
   name: 'East West Bank',
   address1: "208 Canal Street",
   address2: "",
@@ -42,9 +52,11 @@ const financial = {
   zip: "10013",
   hours: "Mon-Fri: 8:30am - 4:30pm",
   type: "financial",
-  'Location 1': "(40.71726637186103, -73.99924605626391)" 
+  location: "(40.71726637186103, -73.99924605626391)",
+  x_coordinate: 984459,
+  y_coordinate: 200596,
 }
-const facilityFinancial = readFeature(financial)
+const facilityFinancial = csvPoint.readFeature(financial)
 
 
 const stationFeature = new Feature({

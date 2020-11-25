@@ -1,4 +1,4 @@
-import {App} from '../src/js/App'
+import App from '../src/js/App'
 import index from '../src/js/index'
 
 test ('index creates App', () => {
