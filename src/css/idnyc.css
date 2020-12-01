@@ -28,6 +28,9 @@
 .facility.financial .name:before, label[for="chc-chc-2"]:before {
   background-image: url('../img/financial.svg');
 }
+.facility.temporary .name:before, label[for="chc-chc-3"]:before {
+  background-image: url('../img/temporary.svg');
+}
 .fnd .facility .btn.prep {
   display: block;
   width: auto;

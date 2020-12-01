@@ -7,7 +7,7 @@ id,name,address1,address2,city,zip,hours,type,start_date,end_date,url,status_mes
 145,National Sawdust,80 N 6th St.,,Brooklyn,11249,,cultural,,,https://nationalsawdust.org,,994984,201271,"(40.719113, -73.961277)"
 1,Amalgamated Bank,2067 Bartow Avenue,,Bronx,10475,,financial,,,https://www.amalgamatedbank.com,,1031807,256111,"(40.869512, -73.828051)"
 36,First Republic Bank,148 East 79th Street,(at Lexington),New York,10075,,financial,,,https://www.firstrepublic.com,,995712,221572,"(40.774833, -73.958616)"
-1000,Pop-Up Center NYC,2 Metrotech,(at Metrotech Plaza),Brooklyn,11201,Mon-Fri: 9:00am - 5:00pm,temporary,08/01/2020,09/09/2020,https://a069-idnyconlineportal.nyc.gov/IOPWeb/#/EN/Dashboard,Temporarily closed,988217,192020,"(40.693727, -73.985695)"
+1000,Pop-Up Center NYC,2 Metrotech,(at Metrotech Plaza),Brooklyn,11201,Mon-Fri: 9:00am - 5:00pm,temporary,08/01/2020,12/09/2021,https://a069-idnyconlineportal.nyc.gov/IOPWeb/#/EN/Dashboard,Temporarily closed,988217,192020,"(40.693727, -73.985695)"
 38,First Republic Bank,2160 Broadway,(at 76th Street),New York,10024,,financial,,,https://www.firstrepublic.com,,989507,224129,"(40.781857, -73.981018)"
 81,Museum of Chinese in America,215 Centre St,,New York,10013,,cultural,,,https://www.mocanyc.org/support_moca/membership/idnycfaq,,984564,201367,"(40.719383, -73.998867)"
 65,Brooklyn Academy of Music,30 Lafayette Ave,,Brooklyn,11217,,cultural,,,https://www.bam.org/media/7365951/IDNYC-form-2016.pdf,,990424,189521,"(40.686866, -73.977738)"

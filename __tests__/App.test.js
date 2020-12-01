@@ -96,6 +96,12 @@ test ('constructor', () => {
           values: ['financial'],
           label: 'Financial Institution',
           checked: true
+        },
+        {
+          name: 'type',
+          values: ['temporary'],
+          label: 'Temporary Location',
+          checked: true
         }
       ]
     }
