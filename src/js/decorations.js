@@ -36,14 +36,14 @@ const decorations = {
       const html = $('<div></div>')
 
       const lnk = this.get('url')
-      const status = this.get('status_message')
+      const info = this.get('additional_info')
       const hours = this.get('hours')
 
       if (hours) {
         html.append(`<div><strong>Hours: </strong><div class="hours notranslate">${hours}</div></div>`)
       }
-      if (status) {
-        html.append(`<div><strong>Status: </strong>${status}</div>`)
+      if (info) {
+        html.append(`<div><strong>Additional Info: </strong><br>${info}</div>`)
       }
       if (lnk) {
         html.append(`<a class="btn rad-all prep" href="${lnk}" target="_blank">Prepare for your visit</a>`)

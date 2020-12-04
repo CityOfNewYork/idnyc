@@ -82,9 +82,15 @@ test ('constructor', () => {
         {
           name: 'type',
           values: ['permanent'],
-          label: 'ID NYC (permanent)',
+          label: 'IDNYC (permanent)',
           checked: true
         }, 
+        {
+          name: 'type',
+          values: ['temporary'],
+          label: 'IDNYC (temporary)',
+          checked: true
+        },
         {
           name: 'type',
           values: ['cultural'],
@@ -95,12 +101,6 @@ test ('constructor', () => {
           name: 'type',
           values: ['financial'],
           label: 'Financial Institution',
-          checked: true
-        },
-        {
-          name: 'type',
-          values: ['temporary'],
-          label: 'Temporary Location',
           checked: true
         }
       ]
