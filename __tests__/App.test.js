@@ -332,7 +332,7 @@ describe('zoomToExtent', () => {
     expect(mockMap.getSize).toHaveBeenCalledTimes(1)
     expect(mockView.fit).toHaveBeenCalledTimes(1)
 
-    expect(mockView.fit.mock.calls[0][0]).toEqual([100, 0, 300, 200])
+    expect(mockView.fit.mock.calls[0][0]).toEqual([100 - 750, 0 - 750, 300 + 750, 200 + 750])
     expect(mockView.fit.mock.calls[0][1].size).toBe('mock-size')
     expect(mockView.fit.mock.calls[0][1].duration).toBe(500)
 

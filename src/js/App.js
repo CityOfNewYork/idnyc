@@ -122,6 +122,7 @@ class App extends FinderApp {
     features.forEach(f => {
       extent = extentExtend(extent, f.getGeometry().getExtent())
     })
+    extent = [extent[0] - 750, extent[1] - 750, extent[2] + 750, extent[3] + 750]
     this.view.fit(extent, {size: this.map.getSize(), duration: 500})
   }
 }  
