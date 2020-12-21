@@ -14,7 +14,7 @@
   margin: 0 5px -5px -5px;
 }
 .translated-rtl .chc-chc label:before {
-	margin: 0px -2px -4px 4px;
+	margin: 0px -2px -4px 4px !important;
 }
 .translated-rtl .pop>.content .name {
 	padding-right: unset;
