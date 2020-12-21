@@ -139,3 +139,44 @@ div.subway-icon div {
 .translated-rtl div.subway-icon div {
 	text-align: center;
 }
+
+/* splash window */
+@media only screen and (max-width: 370px) {
+  .fnd .splash .dia {
+    width: 320px;
+    left: calc(50% - 170px);
+  }
+}
+@media only screen and (max-width: 320px) {
+  .fnd .splash .dia {
+    width: 290px;
+    left: calc(50% - 155px);
+  }
+}
+.fnd .splash .dia {
+  top: 50px;
+  overflow: auto;
+}
+@media only screen and (max-height: 475px) {
+  .fnd .splash .dia .dia-msg {
+    max-height: 185px;
+    overflow: auto;
+  }
+}
+@media only screen and (max-height: 475px) {
+  .fnd .splash .dia .dia-msg {
+    max-height: 185px;
+    overflow: auto;
+  }
+}
+@media only screen and (max-height: 320px) {
+  .fnd .splash .dia .dia-msg {
+    max-height: 100px;
+  }
+}
+@media only screen and (max-width: 320px) and (max-height: 520px) {
+  .fnd .splash .dia .dia-msg {
+    max-height: 200px;
+    overflow: auto;
+  }
+}
