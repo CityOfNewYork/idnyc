@@ -20,16 +20,16 @@
 	padding-right: unset;
 }
 .facility.permanent .name:before, label[for="chc-chc-0"]:before {
-  background-image: url('../img/permanent.svg');
+  background-image: url('../img/building-15.svg');
 }
-.facility.temporary .name:before, label[for="chc-chc-1"]:before {
-  background-image: url('../img/temporary.svg');
+.facility.cultural .name:before, label[for="chc-chc-1"]:before {
+  background-image: url('../img/stadium-15.svg');
 }
-.facility.cultural .name:before, label[for="chc-chc-2"]:before {
-  background-image: url('../img/cultural.svg');
+.facility.financial .name:before, label[for="chc-chc-2"]:before {
+  background-image: url('../img/bank-15.svg');
 }
-.facility.financial .name:before, label[for="chc-chc-3"]:before {
-  background-image: url('../img/financial.svg');
+.facility.temporary .name:before, label[for="chc-chc-3"]:before {
+  background-image: url('../img/campsite-15.svg');
 }
 .fnd .facility .btn.prep {
   display: block;

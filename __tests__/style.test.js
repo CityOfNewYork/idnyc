@@ -11,70 +11,70 @@ describe('featureStyle', () => {
    // const style = styleFn()
   test('featureStyle - permanent', () => {
     let style = styles.featureStyle(facilityPermanent, 152.8740565703525)
-    expect(style.getImage() instanceof Icon).toBe(true)
-    expect(style.getImage().getSrc()).toBe('img/permanent.svg')
-    expect(style.getImage().getScale()).toBe((12 / 512))
+    expect(style[1].getImage() instanceof Icon).toBe(true)
+    expect(style[1].getImage().getSrc()).toBe('img/building-15.svg')
+    expect(style[1].getImage().getScale()).toBe((12 / 15))
     
     // z > 11
     style = styles.featureStyle(facilityPermanent, 38.21851414258813)
-    expect(style.getImage().getScale()).toBe((16 / 512))
+    expect(style[1].getImage().getScale()).toBe((16 / 15))
 
     // z > 13
     style = styles.featureStyle(facilityPermanent, 9.554628535647032)
-    expect(style.getImage().getScale()).toBe((24 / 512))
+    expect(style[1].getImage().getScale()).toBe((24 / 15))
 
     // z > 15
     style = styles.featureStyle(facilityPermanent, 2.388657133911758)
-    expect(style.getImage().getScale()).toBe((32 / 512))
+    expect(style[1].getImage().getScale()).toBe((32 / 15))
     
     // z > 17
     style = styles.featureStyle(facilityPermanent, 0.5971642834779395)
-    expect(style.getImage().getScale()).toBe((40 / 512))
+    expect(style[1].getImage().getScale()).toBe((40 / 15))
 
   })
   test('featureStyle - financial', () => {
     let style = styles.featureStyle(facilityFinancial, 152.8740565703525)
-    expect(style.getImage() instanceof Icon).toBe(true)
-    expect(style.getImage().getSrc()).toBe('img/financial.svg')
-    expect(style.getImage().getScale()).toBe((12 / 512))
+    expect(style[1].getImage() instanceof Icon).toBe(true)
+    expect(style[1].getImage().getSrc()).toBe('img/bank-15.svg')
+    expect(style[1].getImage().getScale()).toBe((12 / 17))
     
     // z > 11
     style = styles.featureStyle(facilityFinancial, 38.21851414258813)
-    expect(style.getImage().getScale()).toBe((16 / 512))
+    expect(style[1].getImage().getScale()).toBe((16 / 17))
 
     // z > 13
     style = styles.featureStyle(facilityFinancial, 9.554628535647032)
-    expect(style.getImage().getScale()).toBe((24 / 512))
+    expect(style[1].getImage().getScale()).toBe((24 / 17))
 
     // z > 15
     style = styles.featureStyle(facilityFinancial, 2.388657133911758)
-    expect(style.getImage().getScale()).toBe((32 / 512))
+    expect(style[1].getImage().getScale()).toBe((32 / 17))
     
     // z > 17
     style = styles.featureStyle(facilityFinancial, 0.5971642834779395)
-    expect(style.getImage().getScale()).toBe((40 / 512))
+    expect(style[1].getImage().getScale()).toBe((40 / 17))
   })
   test('featureStyle - cultural', () => {
     let style = styles.featureStyle(facilityCultural, 152.8740565703525)
-    expect(style.getImage() instanceof Icon).toBe(true)
-    expect(style.getImage().getSrc()).toBe('img/cultural.svg')
-    expect(style.getImage().getScale()).toBe((12 / 512))
+    expect(style[1].getImage() instanceof Icon).toBe(true)
+    expect(style[1].getImage().getSrc()).toBe('img/stadium-15.svg')
+    expect(style[1].getImage().getScale()).toBe((12 / 15))
     
     // z > 11
     style = styles.featureStyle(facilityCultural, 38.21851414258813)
-    expect(style.getImage().getScale()).toBe((16 / 512))
+    expect(style[1].getImage().getScale()).toBe((16 / 15))
 
     // z > 13
     style = styles.featureStyle(facilityCultural, 9.554628535647032)
-    expect(style.getImage().getScale()).toBe((24 / 512))
+    expect(style[1].getImage().getScale()).toBe((24 / 15))
 
     // z > 15
     style = styles.featureStyle(facilityCultural, 2.388657133911758)
-    expect(style.getImage().getScale()).toBe((32 / 512))
+    expect(style[1].getImage().getScale()).toBe((32 / 15))
     
     // z > 17
     style = styles.featureStyle(facilityCultural, 0.5971642834779395)
-    expect(style.getImage().getScale()).toBe((40 / 512))
+    expect(style[1].getImage().getScale()).toBe((40 / 15))
   })
 })
 
