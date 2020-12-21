@@ -19,17 +19,32 @@
 .translated-rtl .pop>.content .name {
 	padding-right: unset;
 }
+
+.facility .name:before, #filters label:before {
+	background-color: #fff;
+	border-radius: 50%;
+	margin-left: 0;
+}
+
 .facility.permanent .name:before, label[for="chc-chc-0"]:before {
+	border: 1px solid #df4b2a;
   background-image: url('../img/building-15.svg');
 }
 .facility.cultural .name:before, label[for="chc-chc-1"]:before {
+	border: 1px solid #00008B;
   background-image: url('../img/stadium-15.svg');
 }
 .facility.financial .name:before, label[for="chc-chc-2"]:before {
-  background-image: url('../img/bank-15.svg');
+	border: 1px solid #006400;
+	background-image: url('../img/bank-15.svg');
+	background-size: 85%;
+	background-position: center;
 }
 .facility.temporary .name:before, label[for="chc-chc-3"]:before {
+	border: 1px solid #4A235A;
   background-image: url('../img/campsite-15.svg');
+	background-size: 85%;
+	background-position: center;
 }
 .fnd .facility .btn.prep {
   display: block;
