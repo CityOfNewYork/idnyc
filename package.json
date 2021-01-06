@@ -1,6 +1,6 @@
 {
   "name": "idnyc",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,7 @@
   "homepage": "https://github.com/cchendoitt/idnyc#readme",
   "dependencies": {
     "jquery": "^3.5.1",
-    "nyc-lib": "^1.4.26",
+    "nyc-lib": "^1.4.27",
     "ol": "^6.5.0"
   },
   "devDependencies": {
