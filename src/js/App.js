@@ -67,6 +67,9 @@ class App extends FinderApp {
     })
     this.rearrangeLayers()
     this.addSubwayLayers()
+    $('#banner').on('click', () => {
+      document.location = './'
+    })
   } 
   rearrangeLayers() {
     this.map.getBaseLayers().labels.base.setZIndex(4)
