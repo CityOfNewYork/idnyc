@@ -24,7 +24,7 @@
   "homepage": "https://github.com/cchendoitt/idnyc#readme",
   "dependencies": {
     "jquery": "^3.5.1",
-    "nyc-lib": "^1.4.28",
+    "nyc-lib": "^1.4.30",
     "ol": "^6.5.0"
   },
   "devDependencies": {

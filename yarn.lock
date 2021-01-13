@@ -2112,12 +2112,12 @@ cache-base@^1.0.1:
     unset-value "^1.0.0"
 
 call-bind@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/call-bind/-/call-bind-1.0.0.tgz#24127054bb3f9bdcb4b1fb82418186072f77b8ce"
-  integrity sha512-AEXsYIyyDY3MCzbwdhzG3Jx1R0J2wetQyUynn6dYHAO+bg8l1k7jwZtRv4ryryFs7EP+NDlikJlVe59jr0cM2w==
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/call-bind/-/call-bind-1.0.2.tgz#b1d4e89e688119c3c9a903ad30abb2f6a919be3c"
+  integrity sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA==
   dependencies:
     function-bind "^1.1.1"
-    get-intrinsic "^1.0.0"
+    get-intrinsic "^1.0.2"
 
 caller-callsite@^2.0.0:
   version "2.0.0"
@@ -3362,7 +3362,7 @@ get-caller-file@^2.0.1:
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-2.0.5.tgz#4f94412a82db32f36e3b0b9741f8a97feb031f7e"
   integrity sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==
 
-get-intrinsic@^1.0.0, get-intrinsic@^1.0.1:
+get-intrinsic@^1.0.1, get-intrinsic@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/get-intrinsic/-/get-intrinsic-1.0.2.tgz#6820da226e50b24894e08859469dc68361545d49"
   integrity sha512-aeX0vrFm21ILl3+JpFFRNe9aUvp6VFZb2/CTbgLb8j75kOhvoNYjt9d8KA/tJG4gSo8nzEDedRl0h7vDmBYRVg==
@@ -5212,10 +5212,10 @@ nyc-build-helper@^0.0.39:
     webpack "4.19.1"
     zip-dir "^1.0.2"
 
-nyc-lib@^1.4.28:
-  version "1.4.28"
-  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.4.28.tgz#2029231db60fc9299f2de5288ddc04e98b9f631d"
-  integrity sha512-0xyAhe0T9F/o72tNvjTg8RXdV9XYwyQ+BXYmc4vh9naD1yIaujoJGvR8QJtC0b0k0svwc1oesycZjI5Y20Sy8w==
+nyc-lib@^1.4.30:
+  version "1.4.30"
+  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.4.30.tgz#20d4ed1aa7307620e59a12d6788685d9570a8b8f"
+  integrity sha512-BTfSh8tN6MroVOtFvU6XRwDVNFyOjzobT5pg1sHY0DjY9njgOe8KUuhWlH618/JBzL7Hh+AOQ6WCctPCKIV1GA==
   dependencies:
     eslint-config-openlayers "^11.0.0"
     eslint-import-resolver-alias "^1.1.2"

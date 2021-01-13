@@ -30,7 +30,7 @@ class App extends FinderApp {
         dataProjection: 'EPSG:2263'
       }),
       decorations: decorations.facility,
-      splashOptions: App.getSplashOptions(),
+      splashOptions: {message: config.SPLASH_MESSAGE},
       facilitySearch: { displayField: 'search_label', nameField: 'search_name' },
       directionsUrl: config.DIRECTIONS_URL,
       filterChoiceOptions: [
@@ -130,10 +130,4 @@ class App extends FinderApp {
   }
 }  
 
-App.getSplashOptions = () => {
-	return {
-		message: config.SPLASH_MESSAGE,
-		buttonText: ['Screen reader instructions', 'View map']
-	}
-}
 export default App

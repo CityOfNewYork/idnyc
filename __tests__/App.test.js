@@ -71,7 +71,7 @@ test ('constructor', () => {
   expect(FinderApp.mock.calls[0][0].facilityUrl).toEqual(config.FACILITY_CSV_URL)
   expect(FinderApp.mock.calls[0][0].facilityStyle).toEqual(styles.featureStyle)
   expect(FinderApp.mock.calls[0][0].decorations).toEqual(decorations.facility)
-  expect(FinderApp.mock.calls[0][0].splashOptions).toEqual(App.getSplashOptions())
+  expect(FinderApp.mock.calls[0][0].splashOptions).toEqual({message: config.SPLASH_MESSAGE})
   expect(FinderApp.mock.calls[0][0].facilitySearch).toEqual({ displayField: 'search_label', nameField: 'search_name' })
   expect(FinderApp.mock.calls[0][0].directionsUrl).toEqual(config.DIRECTIONS_URL)
   expect(FinderApp.mock.calls[0][0].filterChoiceOptions).toEqual(
@@ -259,12 +259,6 @@ test('createTip', () => {
   expect(FeatureTip.mock.calls[0][0].tips[0].layer).toBe(mockLayer)
   expect(FeatureTip.mock.calls[0][0].tips[0].label).toBe(MapMgr.tipFunction)
 
-})
-
-test('getSplashOptions', () => {
-  expect.assertions(1)
-
-  expect(App.getSplashOptions()).toEqual({message: config.SPLASH_MESSAGE, buttonText: ['Screen reader instructions', 'View map']})
 })
 
 describe('located', () => {
