@@ -17,6 +17,9 @@ const decorations = {
     getName() {
       return this.get('name')
     },
+    nameHtml() {
+      return $('<h3 class="name notranslate" tabindex="0"></h3>').html(this.getName())
+    },
     getAddress1() {
       return this.get('address1')
     },
