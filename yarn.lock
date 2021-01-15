@@ -2202,9 +2202,9 @@ chokidar@^2.1.8:
     fsevents "^1.2.7"
 
 chokidar@^3.3.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.0.tgz#458a4816a415e9d3b3caa4faec2b96a6935a9e65"
-  integrity sha512-JgQM9JS92ZbFR4P90EvmzNpSGhpPBGBSj10PILeDyYFwp4h2/D9OM03wsJ4zW1fEp4ka2DGrnUeD7FuvQ2aZ2Q==
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.1.tgz#ee9ce7bbebd2b79f49f304799d5468e31e14e68a"
+  integrity sha512-9+s+Od+W0VJJzawDma/gvBNQqkTiqYTWLuZoyAsivsI4AaWTCzHG06/TMjsf1cYe9Cb97UCEhjz7HvnPk2p/tw==
   dependencies:
     anymatch "~3.1.1"
     braces "~3.0.2"
@@ -5212,10 +5212,10 @@ nyc-build-helper@^0.0.39:
     webpack "4.19.1"
     zip-dir "^1.0.2"
 
-nyc-lib@^1.4.30:
-  version "1.4.30"
-  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.4.30.tgz#20d4ed1aa7307620e59a12d6788685d9570a8b8f"
-  integrity sha512-BTfSh8tN6MroVOtFvU6XRwDVNFyOjzobT5pg1sHY0DjY9njgOe8KUuhWlH618/JBzL7Hh+AOQ6WCctPCKIV1GA==
+nyc-lib@^1.4.31:
+  version "1.4.31"
+  resolved "https://registry.yarnpkg.com/nyc-lib/-/nyc-lib-1.4.31.tgz#ff9fa9828443ebd1dce18b5765915af7f61f0be0"
+  integrity sha512-/PQwm4zcltAw1jODXcSFCSCjbCCMoRV/xirPhuK5PO5HdeM9pQ5YCJD30S0ZM0M7ZvOOHlbLTH/Rcfa0sywcKQ==
   dependencies:
     eslint-config-openlayers "^11.0.0"
     eslint-import-resolver-alias "^1.1.2"
